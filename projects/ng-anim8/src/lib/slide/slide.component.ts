@@ -25,10 +25,10 @@ export class SlideComponent extends AnimationBase implements AfterViewInit {
   // [class] binding clobbering a static class= attribute.
   protected elementClass = computed(() => `ng8-slide ng8-slide--${this.direction()}`);
 
-  private anchor = viewChild.required<ViewContainerRef>('anchor', { read: ViewContainerRef });
-  private tpl    = viewChild.required<TemplateRef<unknown>>('tpl');
+  private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
+  private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');
 
   ngAfterViewInit(): void {
-    this.initAnimation(this.anchor(), this.tpl());
+    this.initAnimation(this.anchorRef(), this.tplRef());
   }
 }
