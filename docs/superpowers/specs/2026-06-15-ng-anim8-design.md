@@ -36,27 +36,27 @@
 ```
 ng-anim8/
 ├── projects/
-│   └── ng-anim8/                        # Library (built with ng-packagr)
-│       ├── src/
-│       │   ├── lib/
-│       │   │   ├── core/                # Shared internals, not exported directly
-│       │   │   │   ├── animation-base.component.ts
-│       │   │   │   ├── duration.ts      # Preset resolution + type
-│       │   │   │   ├── easing.ts        # Easing constants
-│       │   │   │   └── platform.ts      # isPlatformBrowser helper
-│       │   │   ├── fade/
-│       │   │   │   ├── fade.component.ts
-│       │   │   │   └── fade.component.css
-│       │   │   ├── slide/
-│       │   │   ├── collapse/
-│       │   │   ├── grow/
-│       │   │   ├── zoom/
-│       │   │   └── stagger/
-│       │   ├── index.ts                 # Public API barrel
-│       │   └── ng-anim8.module.ts       # Convenience NgModule
-│       └── ng-package.json
-└── projects/
-    └── demo/                            # Standalone Angular app for development and docs
+│   ├── ng-anim8/                        # Library (built with ng-packagr)
+│   │   ├── src/
+│   │   │   ├── lib/
+│   │   │   │   ├── core/                # Shared internals, not exported directly
+│   │   │   │   │   ├── animation-base.component.ts
+│   │   │   │   │   ├── duration.ts      # Preset resolution + type
+│   │   │   │   │   ├── easing.ts        # Easing constants
+│   │   │   │   │   └── platform.ts      # isPlatformBrowser helper
+│   │   │   │   ├── fade/
+│   │   │   │   │   ├── fade.component.ts
+│   │   │   │   │   └── fade.component.css
+│   │   │   │   ├── slide/
+│   │   │   │   ├── collapse/
+│   │   │   │   ├── grow/
+│   │   │   │   ├── zoom/
+│   │   │   │   └── stagger/
+│   │   │   ├── index.ts                 # Public API barrel
+│   │   │   └── ng-anim8.module.ts       # Convenience NgModule
+│   │   └── ng-package.json
+│   └── demo/                            # Standalone Angular app for development and docs
+└── angular.json
 ```
 
 Each animation folder contains exactly one standalone component and its co-located stylesheet. There are no cross-component dependencies. This structure is deliberately flat to allow each folder to become a secondary entry point (`ng-anim8/fade`, etc.) in a future release by adding a `ng-package.json` per folder.
@@ -146,10 +146,16 @@ Animates `opacity` between 0 and 1.
 
 **Template structure:**
 ```html
+<!-- ViewContainerRef anchor; content is mounted here via createEmbeddedView() -->
 <div class="ng8-fade" [class.ng8-fade--visible]="isVisible">
-  <ng-content />
+  <ng-container #anchor />
 </div>
+<ng-template #content>
+  <ng-content />
+</ng-template>
 ```
+
+The `<ng-template>` holds the projected content. The base class uses `ViewContainerRef` on `#anchor` to call `createEmbeddedView(content)` on enter and `clear()` after leave. When `keepMounted` is `true`, the view is created once and the host wrapper is toggled with `display: none` instead.
 
 **No additional inputs.**
 
