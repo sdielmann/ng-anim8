@@ -19,10 +19,10 @@ import { AnimationBase } from '../core/animation-base.directive';
 export class CollapseComponent extends AnimationBase implements AfterViewInit {
   protected override readonly visibleClass = 'ng8-collapse--visible';
 
-  private anchor = viewChild.required<ViewContainerRef>('anchor', { read: ViewContainerRef });
-  private tpl    = viewChild.required<TemplateRef<unknown>>('tpl');
+  private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
+  private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');
 
   ngAfterViewInit(): void {
-    this.initAnimation(this.anchor(), this.tpl());
+    this.initAnimation(this.anchorRef(), this.tplRef());
   }
 }

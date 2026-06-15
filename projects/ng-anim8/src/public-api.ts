@@ -1,5 +1,10 @@
-/*
- * Public API Surface of ng-anim8
- */
+export { CollapseComponent } from './lib/collapse/collapse.component';
+export { FadeComponent }     from './lib/fade/fade.component';
+export { GrowComponent }     from './lib/grow/grow.component';
+export { SlideComponent }    from './lib/slide/slide.component';
+export { StaggerComponent }  from './lib/stagger/stagger.component';
+export { ZoomComponent }     from './lib/zoom/zoom.component';
+export { NgAnim8Module }     from './ng-anim8.module';
 
-export * from './lib/ng-anim8';
+export type { Duration }        from './lib/core/duration';
+export type { SlideDirection }  from './lib/slide/slide.component';
