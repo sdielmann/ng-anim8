@@ -1,0 +1,16 @@
+.ng8-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition:
+    grid-template-rows var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms);
+}
+
+.ng8-collapse--visible {
+  grid-template-rows: 1fr;
+}
+
+.ng8-collapse__inner {
+  min-height: 0;
+  overflow: hidden;
+}
