@@ -1,0 +1,9 @@
+.ng8-zoom {
+  transform: scale(0);
+  transition:
+    transform var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms);
+}
+
+.ng8-zoom--visible {
+  transform: scale(1);
+}
