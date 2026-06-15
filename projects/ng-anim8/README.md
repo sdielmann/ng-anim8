@@ -1,63 +1,92 @@
-# NgAnim8
+# ng-anim8
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+Declarative animation components for Angular 20+. Wrap any content in an animation component, pass `[show]`, done.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
 ```bash
-ng generate component component-name
+npm install ng-anim8
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Components
 
-```bash
-ng generate --help
+| Component | Effect |
+|---|---|
+| `<ng8-fade>` | Opacity 0 → 1 |
+| `<ng8-slide>` | Translate + opacity (direction: up/down/left/right) |
+| `<ng8-collapse>` | Height 0 → auto (CSS grid trick) |
+| `<ng8-grow>` | Scale 0.75 → 1 + opacity |
+| `<ng8-zoom>` | Scale 0 → 1 |
+| `<ng8-stagger>` | Staggered animation-delay on list children |
+
+## Usage
+
+```typescript
+import { FadeComponent } from 'ng-anim8';
+
+@Component({
+  imports: [FadeComponent],
+  template: `
+    <ng8-fade [show]="isVisible">
+      <p>Hello world</p>
+    </ng8-fade>
+  `
+})
+export class MyComponent {
+  isVisible = signal(false);
+}
 ```
 
-## Building
+## Shared Inputs
 
-To build the library, run:
+All components (except `ng8-stagger`) accept:
 
-```bash
-ng build ng-anim8
+```html
+<ng8-fade
+  [show]="isVisible"
+  duration="fast"
+  easing="ease-in-out"
+  [delay]="100"
+  keepMounted
+  (enterStart)="onEnterStart()"
+  (enterDone)="onEnterDone()"
+  (leaveStart)="onLeaveStart()"
+  (leaveDone)="onLeaveDone()"
+>
+  Content
+</ng8-fade>
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+| Input | Type | Default | Description |
+|---|---|---|---|
+| `show` | `boolean` | `false` | Show/hide the content |
+| `duration` | `'fast' \| 'normal' \| 'slow' \| number` | `'normal'` | Animation duration (ms) |
+| `easing` | `string` | `'ease-in-out'` | CSS easing function |
+| `delay` | `number` | `0` | Delay before animation starts (ms) |
+| `keepMounted` | `boolean attribute` | `false` | Keep content in DOM when hidden (use for tabs, preserved state) |
 
-### Publishing the Library
+## Slide Direction
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-anim8
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```html
+<ng8-slide [show]="isOpen" direction="down">...</ng8-slide>
 ```
 
-## Running end-to-end tests
+Directions: `up` (default), `down`, `left`, `right`
 
-For end-to-end (e2e) testing, run:
+## Stagger
 
-```bash
-ng e2e
+```html
+<ng8-stagger [gap]="75" enterClass="my-enter">
+  @for (item of items; track item.id) {
+    <div>{{ item.name }}</div>
+  }
+</ng8-stagger>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Applies incrementally increasing `animation-delay` to direct children. Children need their own CSS animation.
 
-## Additional Resources
+## Requirements
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular 20+
+- No dependency on `@angular/animations`
+- SSR safe

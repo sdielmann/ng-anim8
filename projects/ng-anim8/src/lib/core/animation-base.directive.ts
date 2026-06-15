@@ -121,6 +121,7 @@ export abstract class AnimationBase implements OnDestroy {
     if (!el || !this.view) return;
 
     this.clearTransition();
+    this.setCssVars(el);
     this.leaveStart.emit();
     el.classList.remove(this.visibleClass);
 
