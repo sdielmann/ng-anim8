@@ -39,6 +39,7 @@
     "@angular/compiler-cli": "^20.3.0",
     "@angular/platform-browser-dynamic": "^20.3.25",
     "@testing-library/angular": "^18.1.1",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
