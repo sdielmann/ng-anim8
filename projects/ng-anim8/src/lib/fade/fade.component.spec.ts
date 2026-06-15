@@ -144,8 +144,9 @@ describe('FadeComponent (+ AnimationBase shared behaviour)', () => {
       `<ng8-fade [show]="true" (enterDone)="onEnterDone()"><span>hi</span></ng8-fade>`,
       { imports: [FadeComponent], componentProperties: { onEnterDone } },
     );
+    expect(onEnterDone).not.toHaveBeenCalled();
     fireTransitionEnd('.ng8-fade');
-    await waitFor(() => expect(onEnterDone).toHaveBeenCalledTimes(1));
+    expect(onEnterDone).toHaveBeenCalledTimes(1);
   });
 
   it('emits leaveStart when leaving', async () => {
@@ -167,8 +168,9 @@ describe('FadeComponent (+ AnimationBase shared behaviour)', () => {
     );
     fixture.componentInstance.isVisible = false;
     fixture.detectChanges();
+    expect(onLeaveDone).not.toHaveBeenCalled();
     fireTransitionEnd('.ng8-fade');
-    await waitFor(() => expect(onLeaveDone).toHaveBeenCalledTimes(1));
+    expect(onLeaveDone).toHaveBeenCalledTimes(1);
   });
 
   // --- SSR ---
