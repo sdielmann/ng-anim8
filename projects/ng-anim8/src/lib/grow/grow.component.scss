@@ -1,0 +1,12 @@
+.ng8-grow {
+  opacity: 0;
+  transform: scale(0.75);
+  transition:
+    opacity   var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms),
+    transform var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms);
+}
+
+.ng8-grow--visible {
+  opacity: 1;
+  transform: scale(1);
+}
