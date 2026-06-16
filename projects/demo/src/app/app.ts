@@ -1,36 +1,11 @@
-import { Component, signal } from '@angular/core';
-import {
-  CollapseComponent,
-  FadeComponent,
-  GrowComponent,
-  SlideComponent,
-  StaggerComponent,
-  ZoomComponent,
-} from 'ng-anim8';
+import { Component } from '@angular/core';
+import { LayoutComponent } from './layout/layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CollapseComponent,
-    FadeComponent,
-    GrowComponent,
-    SlideComponent,
-    StaggerComponent,
-    ZoomComponent,
-  ],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  imports: [LayoutComponent],
+  template: '<app-layout />',
+  styles: [],
 })
-export class App {
-  fadeSig     = signal(false);
-  slideSig    = signal(false);
-  collapseSig = signal(false);
-  growSig     = signal(false);
-  zoomSig     = signal(false);
-  items       = signal<string[]>([]);
-
-  addItem(): void {
-    this.items.update((list) => [...list, `Item ${list.length + 1}`]);
-  }
-}
+export class App {}
