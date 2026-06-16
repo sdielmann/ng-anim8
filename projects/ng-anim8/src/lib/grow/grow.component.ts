@@ -2,12 +2,12 @@ import { AfterViewInit, Component, TemplateRef, ViewContainerRef, viewChild } fr
 import { AnimationBase } from '../core/animation-base.directive';
 
 @Component({
-  selector: 'ng8-grow',
+  selector: 'anim8-grow',
   standalone: true,
   template: `
     <ng-container #anchor />
     <ng-template #tpl>
-      <div class="ng8-grow">
+      <div class="anim8-grow">
         <ng-content />
       </div>
     </ng-template>
@@ -15,7 +15,7 @@ import { AnimationBase } from '../core/animation-base.directive';
   styleUrl: './grow.component.scss',
 })
 export class GrowComponent extends AnimationBase implements AfterViewInit {
-  protected override readonly visibleClass = 'ng8-grow--visible';
+  protected override readonly visibleClass = 'anim8-grow--visible';
 
   private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
   private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');

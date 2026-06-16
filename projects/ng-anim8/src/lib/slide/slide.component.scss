@@ -1,17 +1,17 @@
-.ng8-slide {
+.anim8-slide {
   opacity: 0;
   transition:
-    opacity   var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms),
-    transform var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms);
+    opacity   var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms),
+    transform var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms);
 }
 
-.ng8-slide--visible {
+.anim8-slide--visible {
   opacity: 1;
   transform: translate(0, 0) !important;
 }
 
 /* Starting offsets per direction */
-.ng8-slide--up    { transform: translateY(20px); }
-.ng8-slide--down  { transform: translateY(-20px); }
-.ng8-slide--left  { transform: translateX(20px); }
-.ng8-slide--right { transform: translateX(-20px); }
+.anim8-slide--up    { transform: translateY(20px); }
+.anim8-slide--down  { transform: translateY(-20px); }
+.anim8-slide--left  { transform: translateX(20px); }
+.anim8-slide--right { transform: translateX(-20px); }

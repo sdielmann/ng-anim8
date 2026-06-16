@@ -4,16 +4,16 @@ import { ZoomComponent } from './zoom.component';
 
 describe('ZoomComponent', () => {
   it('does not render when show is false', async () => {
-    await render(`<ng8-zoom [show]="false"><span>content</span></ng8-zoom>`, {
+    await render(`<anim8-zoom [show]="false"><span>content</span></anim8-zoom>`, {
       imports: [ZoomComponent],
     });
-    expect(document.querySelector('.ng8-zoom')).not.toBeInTheDocument();
+    expect(document.querySelector('.anim8-zoom')).not.toBeInTheDocument();
   });
 
   it('renders and adds visible class when show is true', async () => {
-    await render(`<ng8-zoom [show]="true"><span>content</span></ng8-zoom>`, {
+    await render(`<anim8-zoom [show]="true"><span>content</span></anim8-zoom>`, {
       imports: [ZoomComponent],
     });
-    expect(document.querySelector('.ng8-zoom')).toHaveClass('ng8-zoom--visible');
+    expect(document.querySelector('.anim8-zoom')).toHaveClass('anim8-zoom--visible');
   });
 });

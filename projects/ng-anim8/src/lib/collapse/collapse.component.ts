@@ -2,13 +2,13 @@ import { AfterViewInit, Component, TemplateRef, ViewContainerRef, viewChild } fr
 import { AnimationBase } from '../core/animation-base.directive';
 
 @Component({
-  selector: 'ng8-collapse',
+  selector: 'anim8-collapse',
   standalone: true,
   template: `
     <ng-container #anchor />
     <ng-template #tpl>
-      <div class="ng8-collapse">
-        <div class="ng8-collapse__inner">
+      <div class="anim8-collapse">
+        <div class="anim8-collapse__inner">
           <ng-content />
         </div>
       </div>
@@ -17,7 +17,7 @@ import { AnimationBase } from '../core/animation-base.directive';
   styleUrl: './collapse.component.scss',
 })
 export class CollapseComponent extends AnimationBase implements AfterViewInit {
-  protected override readonly visibleClass = 'ng8-collapse--visible';
+  protected override readonly visibleClass = 'anim8-collapse--visible';
 
   private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
   private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');

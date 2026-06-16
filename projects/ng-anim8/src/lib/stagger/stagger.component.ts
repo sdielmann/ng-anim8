@@ -9,15 +9,15 @@ import {
 import { injectIsBrowser } from '../core/platform';
 
 @Component({
-  selector: 'ng8-stagger',
+  selector: 'anim8-stagger',
   standalone: true,
   template: `<ng-content />`,
   styleUrl: './stagger.component.scss',
-  host: { class: 'ng8-stagger' },
+  host: { class: 'anim8-stagger' },
 })
 export class StaggerComponent implements AfterViewInit, OnDestroy {
   gap        = input<number>(50);
-  enterClass = input<string>('ng8-stagger-enter');
+  enterClass = input<string>('anim8-stagger-enter');
 
   private readonly el        = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly isBrowser = injectIsBrowser();
