@@ -215,3 +215,4 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+.superpowers/
