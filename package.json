@@ -1,12 +1,13 @@
 {
   "name": "ng-anim8",
-  "version": "0.0.1",
+  "version": "20.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "husky"
   },
   "prettier": {
     "printWidth": 100,
@@ -39,18 +40,15 @@
     "@angular/cli": "^20.3.13",
     "@angular/compiler-cli": "^20.3.0",
     "@angular/platform-browser-dynamic": "^20.3.25",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^12.0.8",
-    "@semantic-release/npm": "^13.1.5",
-    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-angular": "^21.0.2",
     "@testing-library/angular": "^18.1.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
+    "changelogen": "^0.6.2",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.9.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
@@ -61,7 +59,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^20.3.0",
-    "semantic-release": "^25.0.5",
     "ts-jest": "^29.4.11",
     "typescript": "~5.9.2"
   }
