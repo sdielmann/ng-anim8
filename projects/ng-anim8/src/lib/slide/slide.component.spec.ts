@@ -4,37 +4,37 @@ import { SlideComponent } from './slide.component';
 
 describe('SlideComponent', () => {
   it('does not render when show is false', async () => {
-    await render(`<ng8-slide [show]="false"><span>content</span></ng8-slide>`, {
+    await render(`<anim8-slide [show]="false"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
     });
-    expect(document.querySelector('.ng8-slide')).not.toBeInTheDocument();
+    expect(document.querySelector('.anim8-slide')).not.toBeInTheDocument();
   });
 
   it('renders the slide element when show is true', async () => {
-    await render(`<ng8-slide [show]="true"><span>content</span></ng8-slide>`, {
+    await render(`<anim8-slide [show]="true"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
     });
-    expect(document.querySelector('.ng8-slide')).toBeInTheDocument();
+    expect(document.querySelector('.anim8-slide')).toBeInTheDocument();
   });
 
   it('adds the visible class when show is true', async () => {
-    await render(`<ng8-slide [show]="true"><span>content</span></ng8-slide>`, {
+    await render(`<anim8-slide [show]="true"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
     });
-    expect(document.querySelector('.ng8-slide')).toHaveClass('ng8-slide--visible');
+    expect(document.querySelector('.anim8-slide')).toHaveClass('anim8-slide--visible');
   });
 
   it('defaults direction to "up"', async () => {
-    await render(`<ng8-slide [show]="true"><span>content</span></ng8-slide>`, {
+    await render(`<anim8-slide [show]="true"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
     });
-    expect(document.querySelector('.ng8-slide')).toHaveClass('ng8-slide--up');
+    expect(document.querySelector('.anim8-slide')).toHaveClass('anim8-slide--up');
   });
 
   it('applies the direction class when direction is set', async () => {
-    await render(`<ng8-slide [show]="true" direction="down"><span>content</span></ng8-slide>`, {
+    await render(`<anim8-slide [show]="true" direction="down"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
     });
-    expect(document.querySelector('.ng8-slide')).toHaveClass('ng8-slide--down');
+    expect(document.querySelector('.anim8-slide')).toHaveClass('anim8-slide--down');
   });
 });

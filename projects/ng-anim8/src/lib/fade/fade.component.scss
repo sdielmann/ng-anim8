@@ -1,9 +1,9 @@
-.ng8-fade {
+.anim8-fade {
   opacity: 0;
   transition:
-    opacity var(--ng8-duration, 300ms) var(--ng8-easing, ease-in-out) var(--ng8-delay, 0ms);
+    opacity var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms);
 }
 
-.ng8-fade--visible {
+.anim8-fade--visible {
   opacity: 1;
 }

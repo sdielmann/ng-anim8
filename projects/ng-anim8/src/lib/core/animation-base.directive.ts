@@ -145,9 +145,9 @@ export abstract class AnimationBase implements OnDestroy {
   }
 
   private setCssVars(el: HTMLElement): void {
-    el.style.setProperty('--ng8-duration', `${resolveDuration(this.duration())}ms`);
-    el.style.setProperty('--ng8-easing', this.easing());
-    el.style.setProperty('--ng8-delay', `${this.delay()}ms`);
+    el.style.setProperty('--anim8-duration', `${resolveDuration(this.duration())}ms`);
+    el.style.setProperty('--anim8-easing', this.easing());
+    el.style.setProperty('--anim8-delay', `${this.delay()}ms`);
   }
 
   /**

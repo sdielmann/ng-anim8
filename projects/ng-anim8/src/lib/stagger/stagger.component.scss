@@ -1,9 +1,9 @@
 /*
- * ng8-stagger sets animation-delay on children.
+ * anim8-stagger sets animation-delay on children.
  * The child elements must define their own @keyframes animation.
- * This file provides a default enter keyframe for the ng8-stagger-enter class.
+ * This file provides a default enter keyframe for the anim8-stagger-enter class.
  */
-@keyframes ng8-stagger-in {
+@keyframes anim8-stagger-in {
   from {
     opacity: 0;
     transform: translateY(12px);
@@ -14,6 +14,6 @@
   }
 }
 
-.ng8-stagger-enter {
-  animation: ng8-stagger-in 300ms ease-in-out both;
+.anim8-stagger-enter {
+  animation: anim8-stagger-in 300ms ease-in-out both;
 }

@@ -2,12 +2,12 @@ import { AfterViewInit, Component, TemplateRef, ViewContainerRef, viewChild } fr
 import { AnimationBase } from '../core/animation-base.directive';
 
 @Component({
-  selector: 'ng8-fade',
+  selector: 'anim8-fade',
   standalone: true,
   template: `
     <ng-container #anchor />
     <ng-template #tpl>
-      <div class="ng8-fade">
+      <div class="anim8-fade">
         <ng-content />
       </div>
     </ng-template>
@@ -15,7 +15,7 @@ import { AnimationBase } from '../core/animation-base.directive';
   styleUrl: './fade.component.scss',
 })
 export class FadeComponent extends AnimationBase implements AfterViewInit {
-  protected override readonly visibleClass = 'ng8-fade--visible';
+  protected override readonly visibleClass = 'anim8-fade--visible';
 
   private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
   private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');

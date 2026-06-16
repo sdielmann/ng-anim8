@@ -2,12 +2,12 @@ import { AfterViewInit, Component, TemplateRef, ViewContainerRef, viewChild } fr
 import { AnimationBase } from '../core/animation-base.directive';
 
 @Component({
-  selector: 'ng8-zoom',
+  selector: 'anim8-zoom',
   standalone: true,
   template: `
     <ng-container #anchor />
     <ng-template #tpl>
-      <div class="ng8-zoom">
+      <div class="anim8-zoom">
         <ng-content />
       </div>
     </ng-template>
@@ -15,7 +15,7 @@ import { AnimationBase } from '../core/animation-base.directive';
   styleUrl: './zoom.component.scss',
 })
 export class ZoomComponent extends AnimationBase implements AfterViewInit {
-  protected override readonly visibleClass = 'ng8-zoom--visible';
+  protected override readonly visibleClass = 'anim8-zoom--visible';
 
   private anchorRef = viewChild.required<string, ViewContainerRef>('anchor', { read: ViewContainerRef });
   private tplRef    = viewChild.required<TemplateRef<unknown>>('tpl');

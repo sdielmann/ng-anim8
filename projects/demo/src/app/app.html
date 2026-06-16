@@ -3,49 +3,49 @@
 <section>
   <h2>Fade</h2>
   <button (click)="fadeSig.set(!fadeSig())">Toggle</button>
-  <ng8-fade [show]="fadeSig()">
+  <anim8-fade [show]="fadeSig()">
     <div class="box">Fade content</div>
-  </ng8-fade>
+  </anim8-fade>
 </section>
 
 <section>
   <h2>Slide (down)</h2>
   <button (click)="slideSig.set(!slideSig())">Toggle</button>
-  <ng8-slide [show]="slideSig()" direction="down">
+  <anim8-slide [show]="slideSig()" direction="down">
     <div class="box">Slide content</div>
-  </ng8-slide>
+  </anim8-slide>
 </section>
 
 <section>
   <h2>Collapse</h2>
   <button (click)="collapseSig.set(!collapseSig())">Toggle</button>
-  <ng8-collapse [show]="collapseSig()">
+  <anim8-collapse [show]="collapseSig()">
     <div class="box">Collapse content (height animates)</div>
-  </ng8-collapse>
+  </anim8-collapse>
 </section>
 
 <section>
   <h2>Grow</h2>
   <button (click)="growSig.set(!growSig())">Toggle</button>
-  <ng8-grow [show]="growSig()">
+  <anim8-grow [show]="growSig()">
     <div class="box">Grow content</div>
-  </ng8-grow>
+  </anim8-grow>
 </section>
 
 <section>
   <h2>Zoom</h2>
   <button (click)="zoomSig.set(!zoomSig())">Toggle</button>
-  <ng8-zoom [show]="zoomSig()">
+  <anim8-zoom [show]="zoomSig()">
     <div class="box">Zoom content</div>
-  </ng8-zoom>
+  </anim8-zoom>
 </section>
 
 <section>
   <h2>Stagger</h2>
   <button (click)="addItem()">Add item</button>
-  <ng8-stagger [gap]="75">
+  <anim8-stagger [gap]="75">
     @for (item of items(); track item) {
       <div class="box">{{ item }}</div>
     }
-  </ng8-stagger>
+  </anim8-stagger>
 </section>
