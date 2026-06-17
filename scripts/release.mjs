@@ -50,12 +50,14 @@ run(
   'Commit release',
 );
 run(`git tag v${version}`, `Tag v${version}`);
-run(`git push --follow-tags`, 'Push with tags');
 
 // 5. Publish
 run(
   `npm publish ./dist/ng-anim8 --tag ${tag} --access public`,
   `Publish (tag=${tag})`,
 );
+
+// 6. Push back changes to GitHub
+run(`git push --follow-tags`, 'Push with tags');
 
 console.log(`\n✅ Released v${version} (tag=${tag})${dryRun ? ' [dry-run]' : ''}`);
