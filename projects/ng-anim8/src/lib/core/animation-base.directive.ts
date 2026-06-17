@@ -43,7 +43,9 @@ export abstract class AnimationBase implements OnDestroy {
     // Tracks show() — fires on every change after initAnimation() sets ready=true.
     effect(() => {
       const visible = this.show();
-      if (!this.ready) return;
+      if (!this.ready) {
+        return;
+      }
       this.sync(visible);
     });
   }
@@ -62,7 +64,9 @@ export abstract class AnimationBase implements OnDestroy {
       this.view = this.anchor.createEmbeddedView(this.tpl);
       this.view.detectChanges();
       const el = this.getRootEl();
-      if (el) el.style.display = 'none';
+      if (el) {
+        el.style.display = 'none';
+      }
       return;
     }
 
