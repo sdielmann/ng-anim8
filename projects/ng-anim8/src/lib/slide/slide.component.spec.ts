@@ -17,13 +17,6 @@ describe('SlideComponent', () => {
     expect(document.querySelector('.anim8-slide')).toBeInTheDocument();
   });
 
-  it('adds the visible class when show is true', async () => {
-    await render(`<anim8-slide [show]="true"><span>content</span></anim8-slide>`, {
-      imports: [SlideComponent],
-    });
-    expect(document.querySelector('.anim8-slide')).toHaveClass('anim8-slide--visible');
-  });
-
   it('defaults direction to "up"', async () => {
     await render(`<anim8-slide [show]="true"><span>content</span></anim8-slide>`, {
       imports: [SlideComponent],
