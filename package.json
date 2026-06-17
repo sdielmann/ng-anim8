@@ -1,6 +1,7 @@
 {
   "name": "ng-anim8",
   "version": "0.0.2",
+  "repository": "github:sdielmann/ng-anim8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

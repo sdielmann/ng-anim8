@@ -39,7 +39,7 @@ for (const p of paths) {
 }
 
 // 2. Generate / update CHANGELOG.md
-run(`npx changelogen --output CHANGELOG.md --no-commit --no-tag --no-push --no-bump`, 'Generate CHANGELOG');
+run(`npx changelogen -r ${version} --output CHANGELOG.md --no-commit --no-tag --no-push --no-bump`, 'Generate CHANGELOG');
 
 // 3. Build the library
 run(`pnpm ng build ng-anim8`, 'Build library');
@@ -49,9 +49,9 @@ run(
   `git add CHANGELOG.md package.json projects/ng-anim8/package.json && git commit -m "chore(release): ${version} [skip ci]"`,
   'Commit release',
 );
-run(`git tag v${version}`, `Tag v${version}`);
+run(`git tag -a v${version} -m "v${version}"`, `Tag v${version}`);
 
-// 5. Publish
+// 5. NPM Publish
 run(
   `npm publish ./dist/ng-anim8 --tag ${tag} --access public`,
   `Publish (tag=${tag})`,
@@ -59,5 +59,8 @@ run(
 
 // 6. Push back changes to GitHub
 run(`git push --follow-tags`, 'Push with tags');
+
+// 7. Create GitHub release
+run(`npx changelogen gh release v${version}`, `Create GitHub release v${version}`);
 
 console.log(`\n✅ Released v${version} (tag=${tag})${dryRun ? ' [dry-run]' : ''}`);

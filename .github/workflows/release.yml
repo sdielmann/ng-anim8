@@ -62,3 +62,4 @@ jobs:
         run: node scripts/release.mjs ${{ inputs.version }} --tag=${{ inputs.tag }}
         env:
           DRY_RUN: ${{ inputs.dry_run }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
