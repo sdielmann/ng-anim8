@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## v0.0.4
 
+### ⚠️ Breaking Changes
+
+- **`keepMounted` input removed** — the `keepMounted` attribute on all animation components (`anim8-fade`, `anim8-collapse`, `anim8-slide`, `anim8-grow`, `anim8-zoom`) has been removed. The new `animate.leave`-based approach always removes the element from the DOM when hidden. Consumers using `keepMounted` should remove the attribute.
+- **Lifecycle outputs removed** — `(enterStart)`, `(enterDone)`, `(leaveStart)`, and `(leaveDone)` event bindings have been removed from all animation components. Remove these bindings from any consumer templates.
 
 ### 🚀 Enhancements
 
