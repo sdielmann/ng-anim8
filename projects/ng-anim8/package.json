@@ -1,6 +1,6 @@
 {
   "name": "ng-anim8",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Lightweight, declarative animation components for Angular (like fade, slide, collapse, grow, zoom, ...)",
   "keywords": [
     "angular",
