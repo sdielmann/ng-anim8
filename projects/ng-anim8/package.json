@@ -1,6 +1,16 @@
 {
   "name": "ng-anim8",
   "version": "0.0.1",
+  "description": "Lightweight, declarative animation components for Angular (like fade, slide, collapse, grow, zoom, ...)",
+  "keywords": ["angular", "ng", "angular2", "animation", "fade", "slide", "collapse", "transition", "ng-anim8"],
+  "author": "Steffen Dielmann <steffen@dielmann.consulting>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdielmann/ng-anim8"
+  },
+  "bugs": "https://github.com/sdielmann/ng-anim8/issues",
+  "homepage": "https://sdielmann.github.io/ng-anim8",
   "peerDependencies": {
     "@angular/common": "^20.3.0",
     "@angular/core": "^20.3.0"
