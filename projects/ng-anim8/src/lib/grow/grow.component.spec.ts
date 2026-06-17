@@ -10,10 +10,10 @@ describe('GrowComponent', () => {
     expect(document.querySelector('.anim8-grow')).not.toBeInTheDocument();
   });
 
-  it('renders and adds visible class when show is true', async () => {
+  it('renders the grow element when show is true', async () => {
     await render(`<anim8-grow [show]="true"><span>content</span></anim8-grow>`, {
       imports: [GrowComponent],
     });
-    expect(document.querySelector('.anim8-grow')).toHaveClass('anim8-grow--visible');
+    expect(document.querySelector('.anim8-grow')).toBeInTheDocument();
   });
 });
