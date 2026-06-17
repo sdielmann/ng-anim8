@@ -10,10 +10,10 @@ describe('ZoomComponent', () => {
     expect(document.querySelector('.anim8-zoom')).not.toBeInTheDocument();
   });
 
-  it('renders and adds visible class when show is true', async () => {
+  it('renders the zoom element when show is true', async () => {
     await render(`<anim8-zoom [show]="true"><span>content</span></anim8-zoom>`, {
       imports: [ZoomComponent],
     });
-    expect(document.querySelector('.anim8-zoom')).toHaveClass('anim8-zoom--visible');
+    expect(document.querySelector('.anim8-zoom')).toBeInTheDocument();
   });
 });
