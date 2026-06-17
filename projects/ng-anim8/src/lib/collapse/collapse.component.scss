@@ -1,16 +1,23 @@
 .anim8-collapse {
   display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition:
-    grid-template-rows var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms);
-}
-
-.anim8-collapse--visible {
   grid-template-rows: 1fr;
+  overflow: hidden;
 }
 
 .anim8-collapse__inner {
   min-height: 0;
   overflow: hidden;
+}
+
+@keyframes anim8-collapse-in {
+  from { grid-template-rows: 0fr; }
+  to   { grid-template-rows: 1fr; }
+}
+
+.anim8-collapse--enter {
+  animation: anim8-collapse-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+}
+
+.anim8-collapse--leave {
+  animation: anim8-collapse-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
 }
