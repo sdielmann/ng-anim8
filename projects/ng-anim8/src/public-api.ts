@@ -2,7 +2,6 @@ export { CollapseComponent } from './lib/collapse/collapse.component';
 export { FadeComponent }     from './lib/fade/fade.component';
 export { GrowComponent }     from './lib/grow/grow.component';
 export { SlideComponent }    from './lib/slide/slide.component';
-export { StaggerComponent }  from './lib/stagger/stagger.component';
 export { ZoomComponent }     from './lib/zoom/zoom.component';
 export { NgAnim8Module }     from './ng-anim8.module';
 
