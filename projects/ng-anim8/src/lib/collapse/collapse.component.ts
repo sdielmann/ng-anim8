@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AnimationBase} from '../core/animation-base.directive';
+import { booleanAttribute, Component, input } from '@angular/core';
+import { AnimationBase } from '../core/animation-base.directive';
 
 @Component({
   selector: 'anim8-collapse',
@@ -12,8 +12,11 @@ import {AnimationBase} from '../core/animation-base.directive';
   styleUrl: './collapse.component.scss',
   host: {
     class: 'anim8-collapse',
+    '[class.anim8-collapse--fade]': 'fade()',
     'animate.enter': 'anim8-collapse--enter',
     'animate.leave': 'anim8-collapse--leave'
   }
 })
-export class CollapseComponent extends AnimationBase {}
+export class CollapseComponent extends AnimationBase {
+  fade = input(false, { transform: booleanAttribute });
+}

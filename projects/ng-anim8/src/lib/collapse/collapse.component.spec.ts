@@ -27,4 +27,18 @@ describe('CollapseComponent', () => {
     (fixture.componentInstance as any).isVisible = false;
     expect(document.querySelector('.anim8-collapse')).not.toBeInTheDocument();
   });
+
+  it('applies anim8-collapse--fade class when fade attribute is present', async () => {
+    await render(`<anim8-collapse fade><p>content</p></anim8-collapse>`, {
+      imports: [CollapseComponent],
+    });
+    expect(document.querySelector('.anim8-collapse--fade')).toBeInTheDocument();
+  });
+
+  it('does not apply anim8-collapse--fade class when fade attribute is absent', async () => {
+    await render(`<anim8-collapse><p>content</p></anim8-collapse>`, {
+      imports: [CollapseComponent],
+    });
+    expect(document.querySelector('.anim8-collapse--fade')).not.toBeInTheDocument();
+  });
 });

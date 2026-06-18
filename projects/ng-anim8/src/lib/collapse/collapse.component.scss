@@ -1,7 +1,11 @@
-
 @keyframes anim8-collapse-in {
   from { grid-template-rows: 0fr; }
   to   { grid-template-rows: 1fr; }
+}
+
+@keyframes anim8-collapse-fade-in {
+  from { grid-template-rows: 0fr; opacity: 0; }
+  to   { grid-template-rows: 1fr; opacity: 1; }
 }
 
 :host {
@@ -14,6 +18,14 @@
 
   &.anim8-collapse--leave {
     animation: anim8-collapse-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  }
+
+  &.anim8-collapse--fade.anim8-collapse--enter {
+    animation: anim8-collapse-fade-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+  }
+
+  &.anim8-collapse--fade.anim8-collapse--leave {
+    animation: anim8-collapse-fade-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
   }
 }
 
