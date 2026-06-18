@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.0.5
+
+[compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.4...v0.0.5)
+
+### 🚀 Enhancements
+
+- **grow:** Add minScale input ([ca3b45c](https://github.com/sdielmann/ng-anim8/commit/ca3b45c))
+- **easing:** Add EASINGS map, EasingName type, resolveEasing ([9c1af34](https://github.com/sdielmann/ng-anim8/commit/9c1af34))
+- **easing:** Wire resolveEasing transform and export types ([38343d0](https://github.com/sdielmann/ng-anim8/commit/38343d0))
+- **demo:** Add easing showcase section with animated circle tracks ([1897ea0](https://github.com/sdielmann/ng-anim8/commit/1897ea0))
+
+### 🩹 Fixes
+
+- **collapse:** Remove redundant grid-template-rows from base class ([f6b9527](https://github.com/sdielmann/ng-anim8/commit/f6b9527))
+- **demo:** Animate dot return on easing showcase reset ([45cd449](https://github.com/sdielmann/ng-anim8/commit/45cd449))
+
+### 💅 Refactors
+
+- **core:** Replace orchestration with animate.enter/leave ([7fe0db6](https://github.com/sdielmann/ng-anim8/commit/7fe0db6))
+- **fade:** Switch to keyframe animations and update tests ([256f00e](https://github.com/sdielmann/ng-anim8/commit/256f00e))
+- **collapse:** Switch to keyframe animations and update tests ([0db2b85](https://github.com/sdielmann/ng-anim8/commit/0db2b85))
+- **slide:** Switch to direction-keyed keyframes and update tests ([9b6e1ec](https://github.com/sdielmann/ng-anim8/commit/9b6e1ec))
+- **grow:** Switch to keyframe animations and update tests ([53efcd1](https://github.com/sdielmann/ng-anim8/commit/53efcd1))
+- **zoom:** Switch to keyframe animations and update tests ([ac6c524](https://github.com/sdielmann/ng-anim8/commit/ac6c524))
+- Reduce markup and add animation classes on the host element ([90f1e3e](https://github.com/sdielmann/ng-anim8/commit/90f1e3e))
+
+### 📖 Documentation
+
+- Improve styling of the demo app ([37156b8](https://github.com/sdielmann/ng-anim8/commit/37156b8))
+- Document breaking changes from animate.enter/leave refactor ([f5ff43b](https://github.com/sdielmann/ng-anim8/commit/f5ff43b))
+- Add code coverage badge to README.md ([47a8957](https://github.com/sdielmann/ng-anim8/commit/47a8957))
+- Update documentation ([b0f6aca](https://github.com/sdielmann/ng-anim8/commit/b0f6aca))
+
+### 📦 Build
+
+- Include the correct README.md in the package ([f594a17](https://github.com/sdielmann/ng-anim8/commit/f594a17))
+
+### ✅ Tests
+
+- Fix all unit tests ([57160a8](https://github.com/sdielmann/ng-anim8/commit/57160a8))
+
+### 🤖 CI
+
+- Integrate code coverage ([921feb9](https://github.com/sdielmann/ng-anim8/commit/921feb9))
+
+### ❤️ Contributors
+
+- Steffen Dielmann <steffen@dielmann.consulting>
+
 ## v0.0.4
 
 ### ⚠️ Breaking Changes
