@@ -26,8 +26,8 @@ describe('FadeComponent (+ AnimationBase shared behaviour)', () => {
       `@if (isVisible) { <anim8-fade><span>hello</span></anim8-fade> }`,
       { imports: [FadeComponent], componentProperties: { isVisible: true } },
     );
-    fixture.componentInstance.isVisible = false;
-    fixture.detectChanges();
+    fixture.changeDetectorRef.markForCheck();
+    (fixture.componentInstance as any).isVisible = false;
     expect(document.querySelector('.anim8-fade')).not.toBeInTheDocument();
   });
 

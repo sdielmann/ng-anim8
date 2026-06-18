@@ -1,13 +1,12 @@
 import type { Config } from 'jest';
-
-const isCI = process.env['CI'] === 'true';
+import { createCjsPreset } from 'jest-preset-angular/presets/index.js';
 
 const config: Config = {
-  displayName: 'ng-anim8',
+  ...createCjsPreset(),
   setupFilesAfterEnv: [
-    '<rootDir>/projects/ng-anim8/setup-jest.ts',
+    '<rootDir>/setup-jest.ts',
   ],
-  roots: ['<rootDir>/projects/ng-anim8/src'],
+  roots: ['<rootDir>/src'],
   collectCoverage: false,
   coverageReporters: ['cobertura'],
   coverageDirectory: '<rootDir>/coverage/ng-anim8',

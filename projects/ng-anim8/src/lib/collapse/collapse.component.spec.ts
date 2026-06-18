@@ -23,8 +23,8 @@ describe('CollapseComponent', () => {
       `@if (isVisible) { <anim8-collapse><p>content</p></anim8-collapse> }`,
       { imports: [CollapseComponent], componentProperties: { isVisible: true } },
     );
-    fixture.componentInstance.isVisible = false;
-    fixture.detectChanges();
+    fixture.changeDetectorRef.markForCheck();
+    (fixture.componentInstance as any).isVisible = false;
     expect(document.querySelector('.anim8-collapse')).not.toBeInTheDocument();
   });
 });

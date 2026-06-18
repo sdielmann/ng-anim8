@@ -45,8 +45,8 @@ describe('StaggerComponent', () => {
       },
     );
 
+    fixture.changeDetectorRef.markForCheck();
     fixture.componentInstance.items = ['a', 'b', 'c', 'd'];
-    fixture.detectChanges();
     // Allow MutationObserver callback to fire.
     await Promise.resolve();
 

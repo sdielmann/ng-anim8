@@ -30,7 +30,7 @@ jobs:
         run: pnpm ng build ng-anim8
 
       - name: Test
-        run: pnpm ng test ng-anim8 --watch=false --silent --coverage
+        run: pnpm test:ci
 
       - name: Create coverage badge
         uses: gaelgirodon/ci-badges-action@v1

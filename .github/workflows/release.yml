@@ -56,7 +56,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm ng test ng-anim8 --watch=false
+        run: pnpm test:ci
 
       - name: Release
         run: node scripts/release.mjs ${{ inputs.version }} --tag=${{ inputs.tag }}

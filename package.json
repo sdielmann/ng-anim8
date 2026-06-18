@@ -7,8 +7,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "test:ci": "ng test --silent --coverage",
+    "test": "jest --config projects/ng-anim8/jest.config.ts",
+    "test:ci": "pnpm test --silent --coverage",
     "prepare": "husky"
   },
   "prettier": {
@@ -38,7 +38,6 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-builders/jest": "^20.0.0",
     "@angular/build": "^20.3.28",
     "@angular/cli": "^20.3.13",
     "@angular/compiler-cli": "^20.3.0",
