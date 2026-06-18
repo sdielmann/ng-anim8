@@ -19,9 +19,11 @@
   </div>
 
   <div class="anim-section__preview">
-    <anim8-collapse [show]="show()" [duration]="duration()">
-      <div class="preview-box">Collapse content</div>
-    </anim8-collapse>
+    @if (show()) {
+      <anim8-collapse [duration]="duration()">
+        <div class="preview-box">Collapse content</div>
+      </anim8-collapse>
+    }
   </div>
 
   <app-code-snippet [code]="code()" />

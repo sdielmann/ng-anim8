@@ -3,10 +3,12 @@
   to   { transform: scale(1); }
 }
 
-.anim8-zoom--enter {
-  animation: anim8-zoom-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
-}
+:host {
+  &.anim8-zoom--enter {
+    animation: anim8-zoom-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+  }
 
-.anim8-zoom--leave {
-  animation: anim8-zoom-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  &.anim8-zoom--leave {
+    animation: anim8-zoom-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  }
 }

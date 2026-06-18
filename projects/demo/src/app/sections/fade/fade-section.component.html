@@ -19,9 +19,11 @@
   </div>
 
   <div class="anim-section__preview">
-    <anim8-fade [show]="show()" [duration]="duration()">
-      <div class="preview-box">Fade content</div>
-    </anim8-fade>
+    @if (show()) {
+      <anim8-fade [duration]="duration()">
+        <div class="preview-box">Fade content</div>
+      </anim8-fade>
+    }
   </div>
 
   <app-code-snippet [code]="code()" />

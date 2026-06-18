@@ -3,12 +3,18 @@
 @keyframes anim8-slide-left-in  { from { opacity: 0; transform: translateX(20px);  } to { opacity: 1; transform: translate(0, 0); } }
 @keyframes anim8-slide-right-in { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translate(0, 0); } }
 
-.anim8-slide--up.anim8-slide--enter    { animation: anim8-slide-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
-.anim8-slide--down.anim8-slide--enter  { animation: anim8-slide-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
-.anim8-slide--left.anim8-slide--enter  { animation: anim8-slide-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
-.anim8-slide--right.anim8-slide--enter { animation: anim8-slide-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
 
-.anim8-slide--up.anim8-slide--leave    { animation: anim8-slide-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
-.anim8-slide--down.anim8-slide--leave  { animation: anim8-slide-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
-.anim8-slide--left.anim8-slide--leave  { animation: anim8-slide-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
-.anim8-slide--right.anim8-slide--leave { animation: anim8-slide-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+
+:host {
+  display: block;
+
+  &.anim8-slide--up.anim8-slide--enter    { animation: anim8-slide-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-slide--down.anim8-slide--enter  { animation: anim8-slide-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-slide--left.anim8-slide--enter  { animation: anim8-slide-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-slide--right.anim8-slide--enter { animation: anim8-slide-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+
+  &.anim8-slide--up.anim8-slide--leave    { animation: anim8-slide-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-slide--down.anim8-slide--leave  { animation: anim8-slide-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-slide--left.anim8-slide--leave  { animation: anim8-slide-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-slide--right.anim8-slide--leave { animation: anim8-slide-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+}

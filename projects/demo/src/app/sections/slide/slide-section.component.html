@@ -27,9 +27,11 @@
   </div>
 
   <div class="anim-section__preview">
-    <anim8-slide [show]="show()" [duration]="duration()" [direction]="direction()">
-      <div class="preview-box">Slide content</div>
-    </anim8-slide>
+    @if (show()) {
+      <anim8-slide [duration]="duration()" [direction]="direction()">
+        <div class="preview-box">Slide content</div>
+      </anim8-slide>
+    }
   </div>
 
   <app-code-snippet [code]="code()" />

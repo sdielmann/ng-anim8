@@ -1,6 +1,6 @@
-import { Directive, computed, input } from '@angular/core';
-import { DEFAULT_EASING } from './easing';
-import { Duration, resolveDuration } from './duration';
+import {computed, Directive, input} from '@angular/core';
+import {DEFAULT_EASING} from './easing';
+import {Duration, resolveDuration} from './duration';
 
 @Directive({
   host: {
@@ -10,7 +10,7 @@ import { Duration, resolveDuration } from './duration';
   },
 })
 export abstract class AnimationBase {
-  show     = input<boolean>(false);
+
   duration = input<Duration>('normal');
   easing   = input<string>(DEFAULT_EASING);
   delay    = input<number>(0);

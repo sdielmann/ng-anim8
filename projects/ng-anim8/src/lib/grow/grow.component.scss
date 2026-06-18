@@ -3,10 +3,15 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-.anim8-grow--enter {
-  animation: anim8-grow-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+:host {
+  display: block;
+
+  &.anim8-grow--enter {
+    animation: anim8-grow-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+  }
+
+  &.anim8-grow--leave {
+    animation: anim8-grow-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  }
 }
 
-.anim8-grow--leave {
-  animation: anim8-grow-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
-}

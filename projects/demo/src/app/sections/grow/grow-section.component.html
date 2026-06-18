@@ -19,9 +19,11 @@
   </div>
 
   <div class="anim-section__preview">
-    <anim8-grow [show]="show()" [duration]="duration()">
-      <div class="preview-box">Grow content</div>
-    </anim8-grow>
+    @if (show()) {
+      <anim8-grow [duration]="duration()">
+        <div class="preview-box">Grow content</div>
+      </anim8-grow>
+    }
   </div>
 
   <app-code-snippet [code]="code()" />

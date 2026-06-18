@@ -19,9 +19,11 @@
   </div>
 
   <div class="anim-section__preview">
-    <anim8-zoom [show]="show()" [duration]="duration()">
-      <div class="preview-box">Zoom content</div>
-    </anim8-zoom>
+    @if (show()) {
+      <anim8-zoom [duration]="duration()">
+        <div class="preview-box">Zoom content</div>
+      </anim8-zoom>
+    }
   </div>
 
   <app-code-snippet [code]="code()" />
