@@ -5,6 +5,7 @@ import { CollapseSectionComponent } from '../sections/collapse/collapse-section.
 import { GrowSectionComponent }     from '../sections/grow/grow-section.component';
 import { ZoomSectionComponent }     from '../sections/zoom/zoom-section.component';
 import { StaggerSectionComponent }  from '../sections/stagger/stagger-section.component';
+import { EasingSectionComponent }   from '../sections/easing/easing-section.component';
 
 @Component({
   selector: 'app-layout',
@@ -16,6 +17,7 @@ import { StaggerSectionComponent }  from '../sections/stagger/stagger-section.co
     GrowSectionComponent,
     ZoomSectionComponent,
     StaggerSectionComponent,
+    EasingSectionComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -33,6 +35,7 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
     { id: 'grow',     label: 'Grow' },
     { id: 'zoom',     label: 'Zoom' },
     { id: 'stagger',  label: 'Stagger' },
+    { id: 'easing',   label: 'Easing' },
   ];
 
   ngAfterViewInit(): void {

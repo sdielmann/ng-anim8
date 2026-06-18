@@ -1,0 +1,30 @@
+<section id="easing" class="anim-section">
+  <div class="anim-section__header">
+    <h2 class="anim-section__title">Easing</h2>
+    <p class="anim-section__desc">12 named presets — use them as <code>easing="spring"</code></p>
+  </div>
+
+  <div class="anim-section__controls">
+    <button class="btn-toggle" (click)="play()" [disabled]="playing()">
+      {{ playing() ? 'Playing…' : 'Play All' }}
+    </button>
+  </div>
+
+  <div class="easing-grid">
+    @for (e of easings; track e.name) {
+      <div class="easing-row" [style.--row-easing]="e.css">
+        <div class="easing-row__labels">
+          <span class="easing-row__name">{{ e.name }}</span>
+          <span class="easing-row__value">{{ e.css }}</span>
+        </div>
+        <div class="easing-row__track">
+          <div
+            class="easing-dot"
+            [class.easing-dot--transition]="canTransition()"
+            [class.easing-dot--playing]="playing()"
+          ></div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

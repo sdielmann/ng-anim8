@@ -1,0 +1,67 @@
+.easing-grid {
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.easing-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.easing-row__labels {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.easing-row__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: monospace;
+}
+
+.easing-row__value {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.easing-row__track {
+  flex: 1;
+  position: relative;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.easing-dot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #c084fc);
+
+  &--transition {
+    transition: left 800ms var(--row-easing);
+  }
+
+  &--playing {
+    // 100% = track width; subtract dot-width(24px) + right-padding(2px)
+    left: calc(100% - 26px);
+  }
+}
