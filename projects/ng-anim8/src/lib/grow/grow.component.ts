@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, input, numberAttribute} from '@angular/core';
 import {AnimationBase} from '../core/animation-base.directive';
 
 @Component({
@@ -9,7 +9,10 @@ import {AnimationBase} from '../core/animation-base.directive';
   host: {
     class: 'anim8-grow',
     'animate.enter': 'anim8-grow--enter',
-    'animate.leave': 'anim8-grow--leave'
+    'animate.leave': 'anim8-grow--leave',
+    '[style.--anim8-scale]': 'minScale()',
   }
 })
-export class GrowComponent extends AnimationBase {}
+export class GrowComponent extends AnimationBase {
+  minScale = input(0.75, { transform: numberAttribute });
+}

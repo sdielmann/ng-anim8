@@ -62,7 +62,7 @@ export class AppModule {}
 | `FadeComponent` | `<anim8-fade>` | Opacity 0 → 1 |
 | `SlideComponent` | `<anim8-slide>` | Translate + opacity (4 directions) |
 | `CollapseComponent` | `<anim8-collapse>` | Height 0 → auto |
-| `GrowComponent` | `<anim8-grow>` | Scale 0.75 → 1 + opacity |
+| `GrowComponent` | `<anim8-grow>` | Scale (configurable) → 1 + opacity |
 | `ZoomComponent` | `<anim8-zoom>` | Scale 0 → 1 |
 | `StaggerComponent` | `<anim8-stagger>` | Staggered enter delay on list children |
 
@@ -111,6 +111,10 @@ Animates from height 0 to the content's natural height using the CSS grid trick 
   </anim8-grow>
 }
 ```
+
+| Input | Type | Default | Description |
+|---|---|---|---|
+| `minScale` | `number` | `0.75` | Starting scale for the grow animation |
 
 ### Zoom
 

@@ -1,7 +1,7 @@
 <section id="grow" class="anim-section">
   <div class="anim-section__header">
     <h2 class="anim-section__title">Grow</h2>
-    <p class="anim-section__desc">Scale 0.75 → 1 combined with fade</p>
+    <p class="anim-section__desc">Scale (configurable) → 1 combined with fade</p>
   </div>
 
   <div class="anim-section__controls">
@@ -16,11 +16,19 @@
           (click)="duration.set(d)">{{ d }}</button>
       }
     </div>
+    <div class="picker">
+      @for (s of scales; track s) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="minScale() === s"
+          (click)="minScale.set(s)">{{ s }}</button>
+      }
+    </div>
   </div>
 
   <div class="anim-section__preview">
     @if (show()) {
-      <anim8-grow [duration]="duration()">
+      <anim8-grow [duration]="duration()" [minScale]="minScale()">
         <div class="preview-box">Grow content</div>
       </anim8-grow>
     }
