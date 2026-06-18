@@ -22,8 +22,8 @@
   "bugs": "https://github.com/sdielmann/ng-anim8/issues",
   "homepage": "https://sdielmann.github.io/ng-anim8",
   "peerDependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0"
+    "@angular/common": ">=20.0.0",
+    "@angular/core": ">=20.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
