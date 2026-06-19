@@ -8,6 +8,16 @@
   to   { grid-template-rows: 1fr; opacity: 1; }
 }
 
+@keyframes anim8-collapse-horizontal-in {
+  from { grid-template-columns: 0fr; }
+  to   { grid-template-columns: 1fr; }
+}
+
+@keyframes anim8-collapse-horizontal-fade-in {
+  from { grid-template-columns: 0fr; opacity: 0; }
+  to   { grid-template-columns: 1fr; opacity: 1; }
+}
+
 :host {
   display: grid;
   overflow: hidden;
@@ -27,9 +37,30 @@
   &.anim8-collapse--fade.anim8-collapse--leave {
     animation: anim8-collapse-fade-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
   }
+
+  &.anim8-collapse--horizontal.anim8-collapse--enter {
+    animation: anim8-collapse-horizontal-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+  }
+
+  &.anim8-collapse--horizontal.anim8-collapse--leave {
+    animation: anim8-collapse-horizontal-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  }
+
+  &.anim8-collapse--horizontal.anim8-collapse--fade.anim8-collapse--enter {
+    animation: anim8-collapse-horizontal-fade-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both;
+  }
+
+  &.anim8-collapse--horizontal.anim8-collapse--fade.anim8-collapse--leave {
+    animation: anim8-collapse-horizontal-fade-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both;
+  }
 }
 
 .anim8-collapse__inner {
   min-height: 0;
   overflow: hidden;
+
+  .anim8-collapse--horizontal & {
+    min-width: 0;
+    min-height: unset;
+  }
 }

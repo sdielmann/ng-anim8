@@ -12,11 +12,13 @@ import { AnimationBase } from '../core/animation-base.directive';
   styleUrl: './collapse.component.scss',
   host: {
     class: 'anim8-collapse',
-    '[class.anim8-collapse--fade]': 'fade()',
+    '[class.anim8-collapse--fade]':       'fade()',
+    '[class.anim8-collapse--horizontal]': 'horizontal()',
     'animate.enter': 'anim8-collapse--enter',
     'animate.leave': 'anim8-collapse--leave'
   }
 })
 export class CollapseComponent extends AnimationBase {
-  fade = input(false, { transform: booleanAttribute });
+  fade       = input(false, { transform: booleanAttribute });
+  horizontal = input(false, { transform: booleanAttribute });
 }

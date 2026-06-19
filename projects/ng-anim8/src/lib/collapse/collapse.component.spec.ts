@@ -41,4 +41,18 @@ describe('CollapseComponent', () => {
     });
     expect(document.querySelector('.anim8-collapse--fade')).not.toBeInTheDocument();
   });
+
+  it('applies anim8-collapse--horizontal class when horizontal attribute is present', async () => {
+    await render(`<anim8-collapse horizontal><p>content</p></anim8-collapse>`, {
+      imports: [CollapseComponent],
+    });
+    expect(document.querySelector('.anim8-collapse--horizontal')).toBeInTheDocument();
+  });
+
+  it('does not apply anim8-collapse--horizontal class when horizontal attribute is absent', async () => {
+    await render(`<anim8-collapse><p>content</p></anim8-collapse>`, {
+      imports: [CollapseComponent],
+    });
+    expect(document.querySelector('.anim8-collapse--horizontal')).not.toBeInTheDocument();
+  });
 });
