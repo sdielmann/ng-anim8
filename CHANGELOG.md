@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.0.6
+
+[compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- Improve type safety of durations and easings ([6f5e3d8](https://github.com/sdielmann/ng-anim8/commit/6f5e3d8))
+- **collapse:** Add fade boolean input for opacity animation ([4275e81](https://github.com/sdielmann/ng-anim8/commit/4275e81))
+- Remove stagger component (wasn't working as expected anyway) ([4c6520c](https://github.com/sdielmann/ng-anim8/commit/4c6520c))
+- **slide:** Add new [distance] input ([863ccb9](https://github.com/sdielmann/ng-anim8/commit/863ccb9))
+- **fade:** Add new [blur] input ([8d8a796](https://github.com/sdielmann/ng-anim8/commit/8d8a796))
+- **collapse:** Add new [horizontal] input ([b197ae0](https://github.com/sdielmann/ng-anim8/commit/b197ae0))
+- **provider:** Add new provideAnim8 function to configure defaults ([13a54bf](https://github.com/sdielmann/ng-anim8/commit/13a54bf))
+
+### 📖 Documentation
+
+- Improve docs in demo page ([576cdca](https://github.com/sdielmann/ng-anim8/commit/576cdca))
+- Add badge for bundle size ([e4bddb9](https://github.com/sdielmann/ng-anim8/commit/e4bddb9))
+- Update peerDependencies ([83c2e06](https://github.com/sdielmann/ng-anim8/commit/83c2e06))
+- Remove stagger component ([5450e32](https://github.com/sdielmann/ng-anim8/commit/5450e32))
+- Add size badge ([ad30128](https://github.com/sdielmann/ng-anim8/commit/ad30128))
+
+### ✅ Tests
+
+- Migrate tests to plain jest instead of angular-builder solution ([f605f84](https://github.com/sdielmann/ng-anim8/commit/f605f84))
+
+### ❤️ Contributors
+
+- Steffen Dielmann <steffen@dielmann.consulting>
+
 ## v0.0.5
 
 [compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.4...v0.0.5)
