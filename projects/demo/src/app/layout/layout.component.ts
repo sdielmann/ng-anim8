@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, signal } from '@angular/core';
+import { BlurSectionComponent } from '../sections/blur/blur-section.component';
 import { FadeSectionComponent } from '../sections/fade/fade-section.component';
 import { SlideSectionComponent } from '../sections/slide/slide-section.component';
 import { CollapseSectionComponent } from '../sections/collapse/collapse-section.component';
@@ -12,6 +13,7 @@ import { AttentionSectionComponent } from '../sections/attention/attention-secti
   selector: 'app-layout',
   standalone: true,
   imports: [
+    BlurSectionComponent,
     FadeSectionComponent,
     SlideSectionComponent,
     CollapseSectionComponent,
@@ -32,6 +34,7 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
 
   readonly navItems = [
     { id: 'fade',     label: 'Fade' },
+    { id: 'blur',     label: 'Blur' },
     { id: 'slide',    label: 'Slide' },
     { id: 'collapse', label: 'Collapse' },
     { id: 'grow',     label: 'Grow' },

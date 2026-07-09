@@ -1,0 +1,50 @@
+<section id="blur" class="anim-section">
+  <div class="anim-section__header">
+    <h2 class="anim-section__title">Blur</h2>
+    <p class="anim-section__desc">Fade + <code>filter: blur()</code> — ideal for modals and overlays</p>
+  </div>
+
+  <div class="anim-section__controls">
+    <button class="btn-toggle" (click)="show.set(!show())">
+      {{ show() ? 'Hide' : 'Show' }}
+    </button>
+    <div class="picker">
+      @for (b of blurAmounts; track b) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="blurAmount() === b"
+          (click)="blurAmount.set(b)">{{ b }}px</button>
+      }
+    </div>
+    <div class="picker">
+      @for (d of durations; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="duration() === d"
+          (click)="duration.set(d)">{{ d }}</button>
+      }
+    </div>
+    <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="anim-section__preview">
+    @if (show()) {
+      <anim8-blur
+        [blurAmount]="blurAmount()"
+        [duration]="duration()"
+        [easing]="easing()"
+      >
+        <div class="preview-box">Blur content</div>
+      </anim8-blur>
+    }
+  </div>
+
+  <app-code-snippet [code]="code()" />
+</section>
