@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
 import { render } from '@testing-library/angular';
 import '@testing-library/jest-dom';
 import { Anim8AttentionDirective } from './attention.directive';
@@ -106,5 +106,38 @@ describe('Anim8AttentionDirective — SSR', () => {
     });
     expect(() => fixture.componentInstance.directive.trigger()).not.toThrow();
     expect(document.querySelector('span')).not.toHaveClass('anim8-attention--active');
+  });
+});
+
+describe('Anim8AttentionDirective — anim8Trigger input', () => {
+  @Component({
+    template: `<span [anim8Attention]="'shake'" [anim8Trigger]="count()"></span>`,
+    standalone: true,
+    imports: [Anim8AttentionDirective],
+  })
+  class SignalHost {
+    count = signal(0);
+  }
+
+  it('does not play animation on initial render', async () => {
+    await render(SignalHost);
+    expect(document.querySelector('span')).not.toHaveClass('anim8-attention--active');
+  });
+
+  it('plays animation when anim8Trigger signal changes', async () => {
+    const { fixture } = await render(SignalHost);
+    fixture.componentInstance.count.set(1);
+    fixture.detectChanges();
+    expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
+  });
+
+  it('plays animation again on second signal change', async () => {
+    const { fixture } = await render(SignalHost);
+    fixture.componentInstance.count.set(1);
+    fixture.detectChanges();
+    document.querySelector('span')!.dispatchEvent(new Event('animationend'));
+    fixture.componentInstance.count.set(2);
+    fixture.detectChanges();
+    expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
   });
 });

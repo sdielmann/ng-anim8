@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  effect,
   inject,
   input,
 } from '@angular/core';
@@ -30,6 +31,22 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
   private readonly isBrowser = injectIsBrowser();
 
   anim8Attention = input.required<AttentionVariant>();
+  anim8Trigger = input<unknown>(undefined);
+
+  private initialized = false;
+
+  constructor() {
+    effect(() => {
+      this.anim8Trigger();
+
+      if (!this.initialized) {
+        this.initialized = true;
+        return;
+      }
+
+      this.trigger();
+    });
+  }
 
   private readonly onAnimationEnd = (event: Event): void => {
     if (event.target !== this.el.nativeElement) {
