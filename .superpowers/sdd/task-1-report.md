@@ -15,6 +15,15 @@ Done.
 
 ## Fix note
 - Exported `Anim8AttentionDirective` and `AttentionVariant` from `projects/ng-anim8/src/public-api.ts` so package consumers can import the directive via the library barrel.
-- Commit: `5f14963` (`fix(attention): export directive from public api`)
+- Commit: `0de1e57` (`fix(attention): export directive from public api`)
 - Tests run: `pnpm test -- projects/ng-anim8/src/lib/attention/attention.directive.spec.ts` ✅
 - Remaining concerns: none for this scoped export fix.
+
+## Fix note 2
+- Wired `Anim8AttentionDirective` through Angular component metadata so `attention.directive.scss` is bundled, while keeping the public class name and host bindings stable.
+- Added the attention directive to `NgAnim8Module` for consistent module-based imports.
+- Commit: `966772c` (`fix(attention): wire stylesheet into metadata`)
+- Tests run:
+  - `pnpm test -- projects/ng-anim8/src/lib/attention/attention.directive.spec.ts` ✅
+  - `pnpm ng build ng-anim8` ✅
+- Remaining concerns: none.
