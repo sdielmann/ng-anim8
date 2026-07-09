@@ -1,5 +1,6 @@
 export { CollapseComponent } from './lib/collapse/collapse.component';
 export { Anim8AttentionDirective } from './lib/attention/attention.component';
+export { BlurComponent }     from './lib/blur/blur.component';
 export { FadeComponent }     from './lib/fade/fade.component';
 export { GrowComponent }     from './lib/grow/grow.component';
 export { SlideComponent }    from './lib/slide/slide.component';
