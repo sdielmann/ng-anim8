@@ -67,6 +67,7 @@ export class AppModule {
 | Component                  | Selector              | Effect                                         |
 |----------------------------|-----------------------|------------------------------------------------|
 | `FadeComponent`            | `<anim8-fade>`        | Opacity 0 → 1                                  |
+| `BlurComponent`            | `<anim8-blur>`        | Fade + blur filter (configurable amount)       |
 | `SlideComponent`           | `<anim8-slide>`       | Translate + opacity (4 directions)             |
 | `CollapseComponent`        | `<anim8-collapse>`    | Height (or width) 0 → auto                     |
 | `GrowComponent`            | `<anim8-grow>`        | Scale (configurable) → 1 + opacity             |
@@ -84,6 +85,24 @@ export class AppModule {
 ```
 
 No component-specific inputs. Accepts [shared inputs](#shared-inputs) only.
+
+### Blur
+
+Fades content in and out while applying a `filter: blur()` effect. Ideal for modals, overlays, and focus transitions.
+
+```html
+@if (isOpen()) {
+  <anim8-blur>
+    <div class="modal">Blurs in and out</div>
+  </anim8-blur>
+}
+```
+
+| Input        | Type     | Default | Description           |
+|--------------|----------|---------|-----------------------|
+| `blurAmount` | `number` | `4`     | Blur radius in pixels |
+
+Accepts [shared inputs](#shared-inputs).
 
 ### Slide
 
