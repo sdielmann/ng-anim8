@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
+import { CSP_NONCE, Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
 import { render } from '@testing-library/angular';
 import '@testing-library/jest-dom';
 import { Anim8AttentionDirective } from './attention.directive';
@@ -57,6 +57,16 @@ describe('Anim8AttentionDirective', () => {
 
     await render(MultipleAttentionHost);
     expect(document.querySelectorAll('#anim8-attention-styles')).toHaveLength(1);
+  });
+
+  it('forwards the Angular CSP nonce to the injected style element', async () => {
+    await render(`<span anim8Attention="shake"></span>`, {
+      imports: [Anim8AttentionDirective],
+      providers: [{ provide: CSP_NONCE, useValue: 'test-nonce' }],
+    });
+
+    const style = document.getElementById('anim8-attention-styles') as HTMLStyleElement | null;
+    expect(style?.nonce).toBe('test-nonce');
   });
 
   it('makes inline span hosts transformable without global display rules', async () => {

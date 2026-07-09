@@ -1,4 +1,5 @@
 import {
+  CSP_NONCE,
   Directive,
   ElementRef,
   OnDestroy,
@@ -85,6 +86,7 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
   private readonly el = inject(ElementRef<HTMLElement>);
   private readonly document = inject(DOCUMENT);
   private readonly isBrowser = injectIsBrowser();
+  private readonly cspNonce = inject(CSP_NONCE, { optional: true });
 
   anim8Attention = input.required<AttentionVariant>();
   anim8Trigger = input<unknown>(undefined);
@@ -167,6 +169,9 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
 
     const style = this.document.createElement('style');
     style.id = ATTENTION_STYLE_ID;
+    if (this.cspNonce) {
+      style.nonce = this.cspNonce;
+    }
     style.textContent = ATTENTION_STYLES;
     this.document.head.appendChild(style);
   }
