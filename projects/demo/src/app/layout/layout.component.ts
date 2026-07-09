@@ -6,6 +6,7 @@ import { GrowSectionComponent } from '../sections/grow/grow-section.component';
 import { ZoomSectionComponent } from '../sections/zoom/zoom-section.component';
 import { AnimationInListsSectionComponent } from '../sections/animation-in-lists/animation-in-lists-section.component';
 import { EasingSectionComponent } from '../sections/easing/easing-section.component';
+import { AttentionSectionComponent } from '../sections/attention/attention-section.component';
 
 @Component({
   selector: 'app-layout',
@@ -18,6 +19,7 @@ import { EasingSectionComponent } from '../sections/easing/easing-section.compon
     ZoomSectionComponent,
     AnimationInListsSectionComponent,
     EasingSectionComponent,
+    AttentionSectionComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -33,7 +35,8 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
     { id: 'slide',    label: 'Slide' },
     { id: 'collapse', label: 'Collapse' },
     { id: 'grow',     label: 'Grow' },
-    { id: 'zoom',     label: 'Zoom' },
+    { id: 'zoom',      label: 'Zoom' },
+    { id: 'attention', label: 'Attention' },
     { id: 'stagger',  label: 'Stagger' },
     { id: 'easing',   label: 'Easing' },
   ];

@@ -1,0 +1,40 @@
+<section id="attention" class="anim-section">
+  <div class="anim-section__header">
+    <h2 class="anim-section__title">Attention</h2>
+    <p class="anim-section__desc">One-shot animations to draw the user's eye — triggered imperatively</p>
+  </div>
+
+  <div class="anim-section__controls">
+    <button class="btn-toggle" (click)="play()">Play</button>
+
+    <div class="picker">
+      @for (v of variants; track v) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="variant() === v"
+          (click)="variant.set(v)">{{ v }}</button>
+      }
+    </div>
+
+    <div class="picker">
+      @for (d of durations; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="duration() === d"
+          (click)="duration.set(d)">{{ d }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="anim-section__preview">
+    <div
+      #box="anim8Attention"
+      [anim8Attention]="variant()"
+      [duration]="duration()"
+      class="preview-box">
+      Attention!
+    </div>
+  </div>
+
+  <app-code-snippet [code]="code()" />
+</section>
