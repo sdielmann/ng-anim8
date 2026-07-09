@@ -17,6 +17,14 @@
       }
     </div>
     <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
+    <div class="picker">
       @for (s of scales; track s) {
         <button
           class="picker__btn"
@@ -28,7 +36,7 @@
 
   <div class="anim-section__preview">
     @if (show()) {
-      <anim8-grow [duration]="duration()" [minScale]="minScale()">
+      <anim8-grow [duration]="duration()" [easing]="easing()" [minScale]="minScale()">
         <div class="preview-box">Grow content</div>
       </anim8-grow>
     }

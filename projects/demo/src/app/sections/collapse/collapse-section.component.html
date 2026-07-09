@@ -16,11 +16,39 @@
           (click)="duration.set(d)">{{ d }}</button>
       }
     </div>
+    <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
+    <div class="picker">
+      <button
+        class="picker__btn"
+        [class.picker__btn--active]="!fade()"
+        (click)="fade.set(false)">no fade</button>
+      <button
+        class="picker__btn"
+        [class.picker__btn--active]="fade()"
+        (click)="fade.set(true)">fade</button>
+    </div>
+    <div class="picker">
+      <button
+        class="picker__btn"
+        [class.picker__btn--active]="!horizontal()"
+        (click)="horizontal.set(false)">vertical</button>
+      <button
+        class="picker__btn"
+        [class.picker__btn--active]="horizontal()"
+        (click)="horizontal.set(true)">horizontal</button>
+    </div>
   </div>
 
   <div class="anim-section__preview">
     @if (show()) {
-      <anim8-collapse [duration]="duration()">
+      <anim8-collapse [duration]="duration()" [easing]="easing()" [fade]="fade()" [horizontal]="horizontal()">
         <div class="preview-box">Collapse content</div>
       </anim8-collapse>
     }

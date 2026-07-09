@@ -17,6 +17,14 @@
       }
     </div>
     <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
+    <div class="picker">
       @for (dir of directions; track dir) {
         <button
           class="picker__btn"
@@ -24,11 +32,19 @@
           (click)="direction.set(dir)">{{ directionLabels[dir] }}</button>
       }
     </div>
+    <div class="picker">
+      @for (d of distances; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="distance() === d"
+          (click)="distance.set(d)">{{ d }}px</button>
+      }
+    </div>
   </div>
 
   <div class="anim-section__preview">
     @if (show()) {
-      <anim8-slide [duration]="duration()" [direction]="direction()">
+      <anim8-slide [duration]="duration()" [easing]="easing()" [direction]="direction()" [distance]="distance()">
         <div class="preview-box">Slide content</div>
       </anim8-slide>
     }

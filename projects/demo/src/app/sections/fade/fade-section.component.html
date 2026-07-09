@@ -16,11 +16,19 @@
           (click)="duration.set(d)">{{ d }}</button>
       }
     </div>
+    <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
   </div>
 
   <div class="anim-section__preview">
     @if (show()) {
-      <anim8-fade [duration]="duration()">
+      <anim8-fade [duration]="duration()" [easing]="easing()">
         <div class="preview-box">Fade content</div>
       </anim8-fade>
     }
