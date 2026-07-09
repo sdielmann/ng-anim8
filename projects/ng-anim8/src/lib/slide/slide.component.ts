@@ -1,4 +1,4 @@
-import {Component, computed, input, numberAttribute} from '@angular/core';
+import {Component, computed, input} from '@angular/core';
 import {AnimationBase} from '../core/animation-base.directive';
 
 export type SlideDirection = 'up' | 'down' | 'left' | 'right';
@@ -17,8 +17,12 @@ export type SlideDirection = 'up' | 'down' | 'left' | 'right';
 })
 export class SlideComponent extends AnimationBase {
   direction = input<SlideDirection>('up');
-  distance  = input(20, { transform: numberAttribute });
+  distance  = input<number | string>(20);
 
   protected elementClass     = computed(() => `anim8-slide anim8-slide--${this.direction()}`);
-  protected resolvedDistance = computed(() => `${this.distance()}px`);
+  protected resolvedDistance = computed(() => {
+    const d = this.distance();
+    if (typeof d === 'number') return `${d}px`;
+    return /^\d+(\.\d+)?$/.test(String(d)) ? `${d}px` : String(d);
+  });
 }

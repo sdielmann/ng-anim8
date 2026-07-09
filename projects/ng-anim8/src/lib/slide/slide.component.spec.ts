@@ -46,4 +46,28 @@ describe('SlideComponent', () => {
     const el = document.querySelector('.anim8-slide') as HTMLElement;
     expect(el.style.getPropertyValue('--anim8-slide-distance')).toBe('50px');
   });
+
+  it('accepts a numeric string distance and converts to px', async () => {
+    await render(`<anim8-slide distance="50"><span>content</span></anim8-slide>`, {
+      imports: [SlideComponent],
+    });
+    const el = document.querySelector('.anim8-slide') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-slide-distance')).toBe('50px');
+  });
+
+  it('accepts a percentage string distance and uses it as-is', async () => {
+    await render(`<anim8-slide distance="100%"><span>content</span></anim8-slide>`, {
+      imports: [SlideComponent],
+    });
+    const el = document.querySelector('.anim8-slide') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-slide-distance')).toBe('100%');
+  });
+
+  it('accepts a px string distance and uses it as-is', async () => {
+    await render(`<anim8-slide distance="200px"><span>content</span></anim8-slide>`, {
+      imports: [SlideComponent],
+    });
+    const el = document.querySelector('.anim8-slide') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-slide-distance')).toBe('200px');
+  });
 });

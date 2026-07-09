@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BlurComponent }     from './lib/blur/blur.component';
 import { CollapseComponent } from './lib/collapse/collapse.component';
 import { FadeComponent }     from './lib/fade/fade.component';
-import { FlyComponent }      from './lib/fly/fly.component';
+import { FadeComponent }     from './lib/fade/fade.component';
 import { GrowComponent }     from './lib/grow/grow.component';
 import { SlideComponent }    from './lib/slide/slide.component';
 import { ZoomComponent }     from './lib/zoom/zoom.component';
@@ -13,7 +13,6 @@ const COMPONENTS = [
   BlurComponent,
   CollapseComponent,
   FadeComponent,
-  FlyComponent,
   GrowComponent,
   SlideComponent,
   ZoomComponent,

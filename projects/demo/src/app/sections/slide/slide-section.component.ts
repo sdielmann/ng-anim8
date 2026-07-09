@@ -14,21 +14,21 @@ export class SlideSectionComponent {
   duration  = signal<Duration>('normal');
   easing    = signal<EasingName>('ease-in-out');
   direction = signal<SlideDirection>('up');
-  distance  = signal(20);
+  distance  = signal<number | string>(20);
 
-  readonly durations: Duration[]        = ['fast', 'normal', 'slow'];
-  readonly easings: EasingName[]        = ['ease-in-out', 'spring', 'bounce', 'snappy'];
-  readonly directions: SlideDirection[] = ['up', 'down', 'left', 'right'];
-  readonly distances: number[]          = [10, 20, 40];
+  readonly durations: Duration[]              = ['fast', 'normal', 'slow'];
+  readonly easings: EasingName[]              = ['ease-in-out', 'spring', 'bounce', 'snappy'];
+  readonly directions: SlideDirection[]       = ['up', 'down', 'left', 'right'];
+  readonly distances: (number | string)[]     = [10, 20, 40, '100%', '200%'];
 
-  readonly directionLabels: Record<SlideDirection, string> = {
+  readonly isNumber = (v: number | string): v is number => typeof v === 'number';
     up: '↑ up', down: '↓ down', left: '← left', right: '→ right',
   };
 
   readonly code = computed(() => `@if (show()) {
   <anim8-slide
     direction="${this.direction()}"
-    [distance]="${this.distance()}"
+    distance="${this.distance()}"
     duration="${this.duration()}"
     easing="${this.easing()}">
     <div>Your content</div>

@@ -69,7 +69,6 @@ export class AppModule {
 | `FadeComponent`            | `<anim8-fade>`        | Opacity 0 → 1                                  |
 | `BlurComponent`            | `<anim8-blur>`        | Fade + blur filter (configurable amount)       |
 | `SlideComponent`           | `<anim8-slide>`       | Translate + opacity (4 directions)             |
-| `FlyComponent`             | `<anim8-fly>`         | Dramatic off-screen translate + opacity (4 directions, configurable distance) |
 | `CollapseComponent`        | `<anim8-collapse>`    | Height (or width) 0 → auto                     |
 | `GrowComponent`            | `<anim8-grow>`        | Scale (configurable) → 1 + opacity             |
 | `ZoomComponent`            | `<anim8-zoom>`        | Scale 0 → 1                                    |
@@ -117,29 +116,10 @@ Translates from an offset in the given direction while fading. Default direction
 }
 ```
 
-| Input       | Type                                   | Default | Description                  |
-|-------------|----------------------------------------|---------|------------------------------|
-| `direction` | `'up' \| 'down' \| 'left' \| 'right'` | `'up'`  | Slide direction              |
-| `distance`  | `number`                               | `20`    | Translation offset in pixels |
-
-### Fly
-
-Like `<anim8-slide>` but designed for dramatic, full off-screen transitions. The `distance` input accepts any CSS length (pixels or percent), making it easy to fly content in from the edge of the viewport or beyond.
-
-```html
-@if (isOpen()) {
-  <anim8-fly direction="up" distance="100%">
-    <div class="panel">Flies in from below</div>
-  </anim8-fly>
-}
-```
-
-| Input       | Type                                     | Default  | Description                                      |
-|-------------|------------------------------------------|----------|--------------------------------------------------|
-| `direction` | `'up' \| 'down' \| 'left' \| 'right'`   | `'up'`   | Direction the element flies in from              |
-| `distance`  | `string` (CSS length)                    | `'100%'` | Translation distance, e.g. `200px` or `50%`     |
-
-Accepts [shared inputs](#shared-inputs).
+| Input       | Type                                   | Default | Description                             |
+|-------------|----------------------------------------|---------|------------------------------------------|
+| `direction` | `'up' \| 'down' \| 'left' \| 'right'` | `'up'`  | Slide direction                          |
+| `distance`  | `number \| string`                     | `20`    | Translation offset — a number is treated as pixels, a string is used as-is (e.g. `'100%'`, `'200px'`) |
 
 ### Collapse
 

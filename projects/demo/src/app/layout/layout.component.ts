@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, signal } from '@angular/core';
 import { BlurSectionComponent } from '../sections/blur/blur-section.component';
 import { FadeSectionComponent } from '../sections/fade/fade-section.component';
-import { FlySectionComponent } from '../sections/fly/fly-section.component';
 import { SlideSectionComponent } from '../sections/slide/slide-section.component';
 import { CollapseSectionComponent } from '../sections/collapse/collapse-section.component';
 import { GrowSectionComponent } from '../sections/grow/grow-section.component';
@@ -16,7 +15,6 @@ import { AttentionSectionComponent } from '../sections/attention/attention-secti
   imports: [
     BlurSectionComponent,
     FadeSectionComponent,
-    FlySectionComponent,
     SlideSectionComponent,
     CollapseSectionComponent,
     GrowSectionComponent,
@@ -38,7 +36,6 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
     { id: 'fade',     label: 'Fade' },
     { id: 'blur',     label: 'Blur' },
     { id: 'slide',    label: 'Slide' },
-    { id: 'fly',      label: 'Fly' },
     { id: 'collapse', label: 'Collapse' },
     { id: 'grow',     label: 'Grow' },
     { id: 'zoom',      label: 'Zoom' },

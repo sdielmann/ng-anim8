@@ -37,7 +37,7 @@
         <button
           class="picker__btn"
           [class.picker__btn--active]="distance() === d"
-          (click)="distance.set(d)">{{ d }}px</button>
+          (click)="distance.set(d)">{{ d }}{{ isNumber(d) ? 'px' : '' }}</button>
       }
     </div>
   </div>
