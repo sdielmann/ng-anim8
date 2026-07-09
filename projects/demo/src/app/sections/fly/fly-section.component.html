@@ -1,0 +1,59 @@
+<section id="fly" class="anim-section">
+  <div class="anim-section__header">
+    <h2 class="anim-section__title">Fly</h2>
+    <p class="anim-section__desc">Dramatic slide-in from off-screen — configurable direction and distance</p>
+  </div>
+
+  <div class="anim-section__controls">
+    <button class="btn-toggle" (click)="show.set(!show())">
+      {{ show() ? 'Hide' : 'Show' }}
+    </button>
+    <div class="picker">
+      @for (d of directions; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="direction() === d"
+          (click)="direction.set(d)">{{ d }}</button>
+      }
+    </div>
+    <div class="picker">
+      @for (d of distances; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="distance() === d"
+          (click)="distance.set(d)">{{ d }}</button>
+      }
+    </div>
+    <div class="picker">
+      @for (d of durations; track d) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="duration() === d"
+          (click)="duration.set(d)">{{ d }}</button>
+      }
+    </div>
+    <div class="picker">
+      @for (e of easings; track e) {
+        <button
+          class="picker__btn"
+          [class.picker__btn--active]="easing() === e"
+          (click)="easing.set(e)">{{ e }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="anim-section__preview">
+    @if (show()) {
+      <anim8-fly
+        [direction]="direction()"
+        [distance]="distance()"
+        [duration]="duration()"
+        [easing]="easing()"
+      >
+        <div class="preview-box">Fly content</div>
+      </anim8-fly>
+    }
+  </div>
+
+  <app-code-snippet [code]="code()" />
+</section>
