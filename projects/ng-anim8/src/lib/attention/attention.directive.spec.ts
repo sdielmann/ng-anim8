@@ -4,6 +4,61 @@ import '@testing-library/jest-dom';
 import { Anim8AttentionDirective } from './attention.directive';
 
 describe('Anim8AttentionDirective', () => {
+  beforeEach(() => {
+    document.getElementById('anim8-attention-styles')?.remove();
+  });
+
+  it('can be applied to an existing Angular component host', async () => {
+    @Component({
+      selector: 'attention-card',
+      template: 'Projected card',
+      standalone: true,
+    })
+    class AttentionCard {}
+
+    @Component({
+      template: `<attention-card [anim8Attention]="'shake'"></attention-card>`,
+      standalone: true,
+      imports: [AttentionCard, Anim8AttentionDirective],
+    })
+    class ComponentHost {}
+
+    await render(ComponentHost);
+    expect(document.querySelector('attention-card')).toHaveClass(
+      'anim8-attention',
+      'anim8-attention--shake',
+    );
+  });
+
+  it('installs class-based global animation styles for property-bound usage', async () => {
+    await render(`<span [anim8Attention]="'shake'"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+
+    const style = document.getElementById('anim8-attention-styles');
+    expect(document.querySelector('span')).toHaveClass('anim8-attention');
+    expect(style).not.toBeNull();
+    expect(style?.textContent).toContain(
+      '.anim8-attention.anim8-attention--shake.anim8-attention--active',
+    );
+    expect(style?.textContent).not.toContain('[anim8Attention]');
+  });
+
+  it('installs animation styles only once', async () => {
+    @Component({
+      template: `
+        <span anim8Attention="shake"></span>
+        <span anim8Attention="pulse"></span>
+      `,
+      standalone: true,
+      imports: [Anim8AttentionDirective],
+    })
+    class MultipleAttentionHost {}
+
+    await render(MultipleAttentionHost);
+    expect(document.querySelectorAll('#anim8-attention-styles')).toHaveLength(1);
+  });
+
   it('applies anim8-attention--shake class for shake variant', async () => {
     await render(`<span anim8Attention="shake"></span>`, {
       imports: [Anim8AttentionDirective],

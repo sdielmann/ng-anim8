@@ -1,27 +1,79 @@
 import {
-  Component,
+  Directive,
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewEncapsulation,
   computed,
   effect,
   inject,
   input,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { resolveDuration } from '../core/duration';
 import { injectIsBrowser } from '../core/platform';
 
 export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
 
-@Component({
+const ATTENTION_STYLE_ID = 'anim8-attention-styles';
+const ATTENTION_STYLES = `
+@keyframes anim8-attention-shake {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-8px); }
+  20% { transform: translateX(8px); }
+  30% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  50% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  70% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes anim8-attention-pulse {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  70% { transform: scale(1.05); }
+}
+
+@keyframes anim8-attention-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+@keyframes anim8-attention-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-10deg); }
+  30% { transform: rotate(10deg); }
+  45% { transform: rotate(-8deg); }
+  60% { transform: rotate(8deg); }
+  75% { transform: rotate(-4deg); }
+  90% { transform: rotate(4deg); }
+}
+
+.anim8-attention.anim8-attention--shake.anim8-attention--active {
+  animation: anim8-attention-shake var(--anim8-attention-duration, 500ms) ease-in-out both;
+}
+
+.anim8-attention.anim8-attention--pulse.anim8-attention--active {
+  animation: anim8-attention-pulse var(--anim8-attention-duration, 600ms) ease-in-out both;
+}
+
+.anim8-attention.anim8-attention--bounce.anim8-attention--active {
+  animation: anim8-attention-bounce var(--anim8-attention-duration, 700ms) ease-out both;
+}
+
+.anim8-attention.anim8-attention--wiggle.anim8-attention--active {
+  animation: anim8-attention-wiggle var(--anim8-attention-duration, 800ms) ease-in-out both;
+}
+`;
+
+@Directive({
   selector: '[anim8Attention]',
   standalone: true,
-  template: '<ng-content />',
-  styleUrl: './attention.directive.scss',
-  encapsulation: ViewEncapsulation.None,
   exportAs: 'anim8Attention',
   host: {
+    class: 'anim8-attention',
     '[class.anim8-attention--shake]': 'anim8Attention() === "shake"',
     '[class.anim8-attention--pulse]': 'anim8Attention() === "pulse"',
     '[class.anim8-attention--bounce]': 'anim8Attention() === "bounce"',
@@ -31,6 +83,7 @@ export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
 })
 export class Anim8AttentionDirective implements OnInit, OnDestroy {
   private readonly el = inject(ElementRef<HTMLElement>);
+  private readonly document = inject(DOCUMENT);
   private readonly isBrowser = injectIsBrowser();
 
   anim8Attention = input.required<AttentionVariant>();
@@ -72,6 +125,7 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
       return;
     }
 
+    this.installStyles();
     this.el.nativeElement.addEventListener('animationend', this.onAnimationEnd);
   }
 
@@ -92,5 +146,16 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
     host.classList.remove('anim8-attention--active');
     void host.offsetWidth;
     host.classList.add('anim8-attention--active');
+  }
+
+  private installStyles(): void {
+    if (this.document.getElementById(ATTENTION_STYLE_ID)) {
+      return;
+    }
+
+    const style = this.document.createElement('style');
+    style.id = ATTENTION_STYLE_ID;
+    style.textContent = ATTENTION_STYLES;
+    this.document.head.appendChild(style);
   }
 }
