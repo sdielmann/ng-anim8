@@ -18,7 +18,7 @@ export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
   selector: '[anim8Attention]',
   standalone: true,
   template: '<ng-content/>',
-  styleUrl: './attention.directive.scss',
+  styleUrl: './attention.component.scss',
   encapsulation: ViewEncapsulation.None,
   exportAs: 'anim8Attention',
   host: {

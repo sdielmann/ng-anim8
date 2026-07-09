@@ -1,7 +1,7 @@
 import { Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
 import { render } from '@testing-library/angular';
 import '@testing-library/jest-dom';
-import { Anim8AttentionDirective } from './attention.directive';
+import { Anim8AttentionDirective } from './attention.component';
 
 describe('Anim8AttentionDirective — variant classes', () => {
   it('applies anim8-attention--shake class for shake variant', async () => {

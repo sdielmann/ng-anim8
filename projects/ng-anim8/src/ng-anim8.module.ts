@@ -1,4 +1,4 @@
-import { Anim8AttentionDirective } from './lib/attention/attention.directive';
+import { Anim8AttentionDirective } from './lib/attention/attention.component';
 import { NgModule } from '@angular/core';
 import { CollapseComponent } from './lib/collapse/collapse.component';
 import { FadeComponent } from './lib/fade/fade.component';
