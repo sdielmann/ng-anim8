@@ -1,10 +1,13 @@
-import { Directive, input } from '@angular/core';
+import { Component, ViewEncapsulation, input } from '@angular/core';
 
 export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
 
-@Directive({
+@Component({
   selector: '[anim8Attention]',
   standalone: true,
+  template: '<ng-content />',
+  styleUrl: './attention.directive.scss',
+  encapsulation: ViewEncapsulation.None,
   host: {
     '[class.anim8-attention--shake]': 'anim8Attention() === "shake"',
     '[class.anim8-attention--pulse]': 'anim8Attention() === "pulse"',
