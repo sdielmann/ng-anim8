@@ -1,0 +1,18 @@
+@keyframes anim8-fly-up-in    { from { opacity: 0; transform: translateY(var(--anim8-fly-distance, 100%));              } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes anim8-fly-down-in  { from { opacity: 0; transform: translateY(calc(-1 * var(--anim8-fly-distance, 100%))); } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes anim8-fly-left-in  { from { opacity: 0; transform: translateX(var(--anim8-fly-distance, 100%));              } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes anim8-fly-right-in { from { opacity: 0; transform: translateX(calc(-1 * var(--anim8-fly-distance, 100%))); } to { opacity: 1; transform: translate(0, 0); } }
+
+:host.anim8-fly {
+  display: block;
+
+  &.anim8-fly--up.anim8-fly--enter    { animation: anim8-fly-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-fly--down.anim8-fly--enter  { animation: anim8-fly-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-fly--left.anim8-fly--enter  { animation: anim8-fly-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+  &.anim8-fly--right.anim8-fly--enter { animation: anim8-fly-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }
+
+  &.anim8-fly--up.anim8-fly--leave    { animation: anim8-fly-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-fly--down.anim8-fly--leave  { animation: anim8-fly-down-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-fly--left.anim8-fly--leave  { animation: anim8-fly-left-in  var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+  &.anim8-fly--right.anim8-fly--leave { animation: anim8-fly-right-in var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) reverse both; }
+}
