@@ -72,6 +72,22 @@ describe('Anim8AttentionDirective — trigger() method', () => {
     fixture.componentInstance.directive.trigger();
     expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
   });
+
+  it('keeps anim8-attention--active when animationend bubbles from projected content', async () => {
+    @Component({
+      template: `<span #dir="anim8Attention" anim8Attention="shake"><button class="child"></button></span>`,
+      standalone: true,
+      imports: [Anim8AttentionDirective],
+    })
+    class BubblingHost {
+      @ViewChild('dir') directive!: Anim8AttentionDirective;
+    }
+
+    const { fixture } = await render(BubblingHost);
+    fixture.componentInstance.directive.trigger();
+    document.querySelector('.child')!.dispatchEvent(new Event('animationend', { bubbles: true }));
+    expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
+  });
 });
 
 describe('Anim8AttentionDirective — SSR', () => {

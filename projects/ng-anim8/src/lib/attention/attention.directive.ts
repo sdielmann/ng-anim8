@@ -31,7 +31,11 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
 
   anim8Attention = input.required<AttentionVariant>();
 
-  private readonly onAnimationEnd = (): void => {
+  private readonly onAnimationEnd = (event: Event): void => {
+    if (event.target !== this.el.nativeElement) {
+      return;
+    }
+
     this.el.nativeElement.classList.remove('anim8-attention--active');
   };
 
