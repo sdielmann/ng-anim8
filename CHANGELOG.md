@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.0.7
+
+[compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- **attention:** Add directive skeleton ([ef7b543](https://github.com/sdielmann/ng-anim8/commit/ef7b543))
+- **attention:** Add imperative replay behavior ([895314a](https://github.com/sdielmann/ng-anim8/commit/895314a))
+- **attention:** Add anim8Trigger input ([d24629c](https://github.com/sdielmann/ng-anim8/commit/d24629c))
+- **attention:** Add duration input ([39a5be9](https://github.com/sdielmann/ng-anim8/commit/39a5be9))
+- **demo:** Add attention section ([8e75ffb](https://github.com/sdielmann/ng-anim8/commit/8e75ffb))
+
+### 🩹 Fixes
+
+- **attention:** Export directive from public api ([0de1e57](https://github.com/sdielmann/ng-anim8/commit/0de1e57))
+- **attention:** Wire stylesheet into metadata ([966772c](https://github.com/sdielmann/ng-anim8/commit/966772c))
+- **attention:** Ignore bubbled animationend events ([aa6d501](https://github.com/sdielmann/ng-anim8/commit/aa6d501))
+- **attention:** Use directive-hosted styles ([6d2ad47](https://github.com/sdielmann/ng-anim8/commit/6d2ad47))
+- **attention:** Support inline hosts ([ad479a4](https://github.com/sdielmann/ng-anim8/commit/ad479a4))
+- **attention:** Forward csp nonce to styles ([d525546](https://github.com/sdielmann/ng-anim8/commit/d525546))
+- Fix animations not working on host elements ([e23f2a9](https://github.com/sdielmann/ng-anim8/commit/e23f2a9))
+
+### 💅 Refactors
+
+- **attention:** Use component with SCSS instead of directive ([b585ae8](https://github.com/sdielmann/ng-anim8/commit/b585ae8))
+- **attention:** Rename directive files to component ([37aa802](https://github.com/sdielmann/ng-anim8/commit/37aa802))
+
+### 📖 Documentation
+
+- Add ideas.md and agent file ([8faeaf6](https://github.com/sdielmann/ng-anim8/commit/8faeaf6))
+- **task-1:** Append fix report ([89c8751](https://github.com/sdielmann/ng-anim8/commit/89c8751))
+- **sdd:** Append task 2 fix report ([4d06d1e](https://github.com/sdielmann/ng-anim8/commit/4d06d1e))
+- **sdd:** Add task 5 report ([9d0d49f](https://github.com/sdielmann/ng-anim8/commit/9d0d49f))
+- Add demo for the configurable easings ([6dc5b85](https://github.com/sdielmann/ng-anim8/commit/6dc5b85))
+
+### 📦 Build
+
+- Fixed repository URL in package.json ([6522292](https://github.com/sdielmann/ng-anim8/commit/6522292))
+
+### ❤️ Contributors
+
+- Steffen Dielmann <steffen@dielmann.consulting>
+
 ## v0.0.6
 
 [compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.5...v0.0.6)
