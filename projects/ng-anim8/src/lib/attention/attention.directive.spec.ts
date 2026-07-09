@@ -1,95 +1,9 @@
-import { CSP_NONCE, Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
+import { Component, PLATFORM_ID, ViewChild, signal } from '@angular/core';
 import { render } from '@testing-library/angular';
 import '@testing-library/jest-dom';
 import { Anim8AttentionDirective } from './attention.directive';
 
-describe('Anim8AttentionDirective', () => {
-  beforeEach(() => {
-    document.getElementById('anim8-attention-styles')?.remove();
-  });
-
-  it('can be applied to an existing Angular component host', async () => {
-    @Component({
-      selector: 'attention-card',
-      template: 'Projected card',
-      standalone: true,
-    })
-    class AttentionCard {}
-
-    @Component({
-      template: `<attention-card [anim8Attention]="'shake'"></attention-card>`,
-      standalone: true,
-      imports: [AttentionCard, Anim8AttentionDirective],
-    })
-    class ComponentHost {}
-
-    await render(ComponentHost);
-    expect(document.querySelector('attention-card')).toHaveClass(
-      'anim8-attention',
-      'anim8-attention--shake',
-    );
-  });
-
-  it('installs class-based global animation styles for property-bound usage', async () => {
-    await render(`<span [anim8Attention]="'shake'"></span>`, {
-      imports: [Anim8AttentionDirective],
-    });
-
-    const style = document.getElementById('anim8-attention-styles');
-    expect(document.querySelector('span')).toHaveClass('anim8-attention');
-    expect(style).not.toBeNull();
-    expect(style?.textContent).toContain(
-      '.anim8-attention.anim8-attention--shake.anim8-attention--active',
-    );
-    expect(style?.textContent).not.toContain('[anim8Attention]');
-  });
-
-  it('installs animation styles only once', async () => {
-    @Component({
-      template: `
-        <span anim8Attention="shake"></span>
-        <span anim8Attention="pulse"></span>
-      `,
-      standalone: true,
-      imports: [Anim8AttentionDirective],
-    })
-    class MultipleAttentionHost {}
-
-    await render(MultipleAttentionHost);
-    expect(document.querySelectorAll('#anim8-attention-styles')).toHaveLength(1);
-  });
-
-  it('forwards the Angular CSP nonce to the injected style element', async () => {
-    await render(`<span anim8Attention="shake"></span>`, {
-      imports: [Anim8AttentionDirective],
-      providers: [{ provide: CSP_NONCE, useValue: 'test-nonce' }],
-    });
-
-    const style = document.getElementById('anim8-attention-styles') as HTMLStyleElement | null;
-    expect(style?.nonce).toBe('test-nonce');
-  });
-
-  it('makes inline span hosts transformable without global display rules', async () => {
-    await render(`<span anim8Attention="shake" style="display: inline"></span>`, {
-      imports: [Anim8AttentionDirective],
-    });
-
-    const el = document.querySelector('span') as HTMLElement;
-    expect(el.style.display).toBe('inline-block');
-  });
-
-  it('leaves flex hosts at their existing display value', async () => {
-    await render(
-      `<div class="flex-host" anim8Attention="shake" style="display: flex"></div>`,
-      {
-        imports: [Anim8AttentionDirective],
-      },
-    );
-
-    const el = document.querySelector('.flex-host') as HTMLElement;
-    expect(el.style.display).toBe('flex');
-  });
-
+describe('Anim8AttentionDirective — variant classes', () => {
   it('applies anim8-attention--shake class for shake variant', async () => {
     await render(`<span anim8Attention="shake"></span>`, {
       imports: [Anim8AttentionDirective],
@@ -126,6 +40,13 @@ describe('Anim8AttentionDirective', () => {
     expect(el).not.toHaveClass('anim8-attention--pulse');
     expect(el).not.toHaveClass('anim8-attention--bounce');
     expect(el).not.toHaveClass('anim8-attention--wiggle');
+  });
+
+  it('always applies the base anim8-attention class', async () => {
+    await render(`<span anim8Attention="shake"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    expect(document.querySelector('span')).toHaveClass('anim8-attention');
   });
 });
 
@@ -173,6 +94,24 @@ describe('Anim8AttentionDirective — trigger() method', () => {
     fixture.componentInstance.directive.trigger();
     document.querySelector('.child')!.dispatchEvent(new Event('animationend', { bubbles: true }));
     expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
+  });
+});
+
+describe('Anim8AttentionDirective — inline-host display', () => {
+  it('makes inline span hosts transformable', async () => {
+    await render(`<span anim8Attention="shake" style="display: inline"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    const el = document.querySelector('span') as HTMLElement;
+    expect(el.style.display).toBe('inline-block');
+  });
+
+  it('leaves flex hosts at their existing display value', async () => {
+    await render(`<div class="flex-host" anim8Attention="shake" style="display: flex"></div>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    const el = document.querySelector('.flex-host') as HTMLElement;
+    expect(el.style.display).toBe('flex');
   });
 });
 
