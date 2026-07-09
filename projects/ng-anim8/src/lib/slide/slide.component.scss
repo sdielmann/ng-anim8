@@ -5,7 +5,7 @@
 
 
 
-.anim8-slide {
+:host.anim8-slide {
   display: block;
 
   &.anim8-slide--up.anim8-slide--enter    { animation: anim8-slide-up-in    var(--anim8-duration, 300ms) var(--anim8-easing, ease-in-out) var(--anim8-delay, 0ms) both; }

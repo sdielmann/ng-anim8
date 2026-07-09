@@ -1,8 +1,7 @@
 <section id="stagger" class="anim-section">
   <div class="anim-section__header">
     <h2 class="anim-section__title">Lists and Repeaters</h2>
-    <p class="anim-section__desc">The animations can also be used within lists. Please note that, depending on your HTML
-      layout and markup, this might not work (e.g. within tables). Consider using a custom animation in those cases.</p>
+    <p class="anim-section__desc">Animations work inside <code>{{ '@for' }}</code> — items enter and leave individually with animation. Use <code>[delay]</code> to stagger enter animations.</p>
   </div>
 
   <div class="anim-section__controls">
@@ -11,9 +10,12 @@
   </div>
 
   <div class="anim-section__preview anim-section__preview--column">
-    @for (item of items(); track item) {
-      <anim8-collapse easing="ease-out" duration="150">
-        <div class="preview-box preview-box--stagger-item">{{ item }}</div>
+    @for (item of items(); track item; let i = $index) {
+      <anim8-collapse easing="ease-out" duration="200">
+        <div class="preview-box preview-box--stagger-item">
+          {{ item }}
+          <button class="stagger-remove-btn" (click)="removeItem(item)">×</button>
+        </div>
       </anim8-collapse>
     }
   </div>

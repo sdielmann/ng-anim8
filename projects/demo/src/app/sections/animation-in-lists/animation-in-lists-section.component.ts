@@ -17,15 +17,22 @@ export class AnimationInListsSectionComponent {
     this.items.update(list => [...list, `Item ${this.nextId++}`]);
   }
 
+  removeItem(item: string): void {
+    this.items.update(list => list.filter(i => i !== item));
+  }
+
   reset(): void {
     this.items.set([]);
     this.nextId = 1;
   }
 
   readonly code = `
-  @for (item of items(); track item) {
-    <anim8-collapse easing="ease-out" duration="150">
-        <div>{{ item }}</div>
+  @for (item of items(); track item; let i = $index) {
+    <anim8-collapse easing="ease-out" duration="200" [delay]="i * 50">
+      <div class="item-row">
+        {{ item }}
+        <button (click)="removeItem(item)">×</button>
+      </div>
     </anim8-collapse>
   }
 `;

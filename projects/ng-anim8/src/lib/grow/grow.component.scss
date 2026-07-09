@@ -3,7 +3,7 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-.anim8-grow {
+:host.anim8-grow {
   display: block;
 
   &.anim8-grow--enter {

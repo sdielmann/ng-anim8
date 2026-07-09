@@ -6,7 +6,7 @@
 ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Fsdielmann%2F2a4ee24be03aecd858b7bdf8fee71cb1%2Fraw%2Fng-anim8-cobertura-coverage.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Declarative animation components for Angular 20+. Wrap any content in a component, control visibility with `@if` — no `@angular/animations` required, SSR-safe.
+Declarative animation components and directives for Angular 20+. Wrap any content in a component and control visibility with `@if`, or use the attention directive on any element — no `@angular/animations` required, SSR-safe.
 
 - No dependency on `@angular/animations`
 - Zoneless-compatible
@@ -50,7 +50,7 @@ export class AppComponent {
 }
 ```
 
-NgModule users can import `NgAnim8Module` once to get all five components.
+NgModule users can import `NgAnim8Module` once to get all components and directives.
 
 ```typescript
 import { NgAnim8Module } from 'ng-anim8';
@@ -64,13 +64,14 @@ export class AppModule {
 
 ## Components
 
-| Component           | Selector           | Effect                              |
-|---------------------|--------------------|-------------------------------------|
-| `FadeComponent`     | `<anim8-fade>`     | Opacity 0 → 1                       |
-| `SlideComponent`    | `<anim8-slide>`    | Translate + opacity (4 directions)  |
-| `CollapseComponent` | `<anim8-collapse>` | Height (or width) 0 → auto          |
-| `GrowComponent`     | `<anim8-grow>`     | Scale (configurable) → 1 + opacity  |
-| `ZoomComponent`     | `<anim8-zoom>`     | Scale 0 → 1                         |
+| Component                  | Selector              | Effect                                         |
+|----------------------------|-----------------------|------------------------------------------------|
+| `FadeComponent`            | `<anim8-fade>`        | Opacity 0 → 1                                  |
+| `SlideComponent`           | `<anim8-slide>`       | Translate + opacity (4 directions)             |
+| `CollapseComponent`        | `<anim8-collapse>`    | Height (or width) 0 → auto                     |
+| `GrowComponent`            | `<anim8-grow>`        | Scale (configurable) → 1 + opacity             |
+| `ZoomComponent`            | `<anim8-zoom>`        | Scale 0 → 1                                    |
+| `Anim8AttentionDirective`  | `[anim8Attention]`    | One-shot attention animation on any element    |
 
 ### Fade
 
@@ -143,6 +144,39 @@ Animates from height 0 to the content's natural height using the CSS grid trick 
 ```
 
 No component-specific inputs. Accepts [shared inputs](#shared-inputs) only.
+
+### Attention
+
+Applies a one-shot attention animation to any existing element. Unlike the other components, `[anim8Attention]` is an attribute directive — it does not wrap content in a new element.
+
+```html
+<div [anim8Attention]="'shake'" #el="anim8Attention">
+  Your element
+</div>
+
+<!-- trigger imperatively -->
+<button (click)="el.trigger()">Play</button>
+```
+
+You can also trigger automatically whenever a bound value changes via `anim8Trigger`:
+
+```html
+<span [anim8Attention]="'pulse'" [anim8Trigger]="errorCount">
+  {{ errorCount }} errors
+</span>
+```
+
+| Input           | Type                                              | Default    | Description                                               |
+|-----------------|---------------------------------------------------|------------|-----------------------------------------------------------|
+| `anim8Attention`| `'shake' \| 'pulse' \| 'bounce' \| 'wiggle'`     | *(required)* | Attention variant to play                               |
+| `anim8Trigger`  | `unknown`                                         | `undefined`| Re-triggers the animation whenever this value changes     |
+| `duration`      | `'fast' \| 'normal' \| 'slow' \| number`          | *(variant default)* | Overrides the default duration for the chosen variant |
+
+Default durations per variant: `shake` 500 ms, `pulse` 600 ms, `bounce` 700 ms, `wiggle` 800 ms.
+
+| Method      | Description                              |
+|-------------|------------------------------------------|
+| `trigger()` | Plays the animation once imperatively    |
 
 ---
 
