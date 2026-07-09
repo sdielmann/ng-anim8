@@ -4,10 +4,12 @@ import {
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  computed,
   effect,
   inject,
   input,
 } from '@angular/core';
+import { resolveDuration } from '../core/duration';
 import { injectIsBrowser } from '../core/platform';
 
 export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
@@ -24,6 +26,7 @@ export type AttentionVariant = 'shake' | 'pulse' | 'bounce' | 'wiggle';
     '[class.anim8-attention--pulse]': 'anim8Attention() === "pulse"',
     '[class.anim8-attention--bounce]': 'anim8Attention() === "bounce"',
     '[class.anim8-attention--wiggle]': 'anim8Attention() === "wiggle"',
+    '[style.--anim8-attention-duration]': 'resolvedDuration()',
   },
 })
 export class Anim8AttentionDirective implements OnInit, OnDestroy {
@@ -32,6 +35,14 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
 
   anim8Attention = input.required<AttentionVariant>();
   anim8Trigger = input<unknown>(undefined);
+  duration = input<number | undefined, string | number | undefined>(undefined, {
+    transform: (value) => (value === undefined ? undefined : resolveDuration(value)),
+  });
+
+  protected readonly resolvedDuration = computed(() => {
+    const duration = this.duration();
+    return duration === undefined ? null : `${duration}ms`;
+  });
 
   private initialized = false;
 

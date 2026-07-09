@@ -141,3 +141,29 @@ describe('Anim8AttentionDirective — anim8Trigger input', () => {
     expect(document.querySelector('span')).toHaveClass('anim8-attention--active');
   });
 });
+
+describe('Anim8AttentionDirective — duration input', () => {
+  it('does not set --anim8-attention-duration when duration is not provided', async () => {
+    await render(`<span anim8Attention="shake"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    const el = document.querySelector('span') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-attention-duration')).toBe('');
+  });
+
+  it('sets --anim8-attention-duration from a numeric value', async () => {
+    await render(`<span [anim8Attention]="'shake'" [duration]="400"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    const el = document.querySelector('span') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-attention-duration')).toBe('400ms');
+  });
+
+  it('sets --anim8-attention-duration from a preset string', async () => {
+    await render(`<span anim8Attention="shake" duration="fast"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+    const el = document.querySelector('span') as HTMLElement;
+    expect(el.style.getPropertyValue('--anim8-attention-duration')).toBe('150ms');
+  });
+});
