@@ -126,6 +126,7 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
     }
 
     this.installStyles();
+    this.ensureTransformableHostDisplay();
     this.el.nativeElement.addEventListener('animationend', this.onAnimationEnd);
   }
 
@@ -143,9 +144,20 @@ export class Anim8AttentionDirective implements OnInit, OnDestroy {
     }
 
     const host = this.el.nativeElement;
+    this.ensureTransformableHostDisplay();
     host.classList.remove('anim8-attention--active');
     void host.offsetWidth;
     host.classList.add('anim8-attention--active');
+  }
+
+  private ensureTransformableHostDisplay(): void {
+    const host = this.el.nativeElement;
+    const display =
+      this.document.defaultView?.getComputedStyle(host).display || host.style.display;
+
+    if (display === 'inline') {
+      host.style.display = 'inline-block';
+    }
   }
 
   private installStyles(): void {

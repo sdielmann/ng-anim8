@@ -59,6 +59,27 @@ describe('Anim8AttentionDirective', () => {
     expect(document.querySelectorAll('#anim8-attention-styles')).toHaveLength(1);
   });
 
+  it('makes inline span hosts transformable without global display rules', async () => {
+    await render(`<span anim8Attention="shake" style="display: inline"></span>`, {
+      imports: [Anim8AttentionDirective],
+    });
+
+    const el = document.querySelector('span') as HTMLElement;
+    expect(el.style.display).toBe('inline-block');
+  });
+
+  it('leaves flex hosts at their existing display value', async () => {
+    await render(
+      `<div class="flex-host" anim8Attention="shake" style="display: flex"></div>`,
+      {
+        imports: [Anim8AttentionDirective],
+      },
+    );
+
+    const el = document.querySelector('.flex-host') as HTMLElement;
+    expect(el.style.display).toBe('flex');
+  });
+
   it('applies anim8-attention--shake class for shake variant', async () => {
     await render(`<span anim8Attention="shake"></span>`, {
       imports: [Anim8AttentionDirective],
