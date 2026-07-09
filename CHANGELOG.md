@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.0.8
+
+[compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.7...v0.0.8)
+
+### 🚀 Enhancements
+
+- **blur:** Add BlurComponent with blurAmount input ([4b95fbd](https://github.com/sdielmann/ng-anim8/commit/4b95fbd))
+- **blur:** Export BlurComponent from public API and NgAnim8Module ([34d65cd](https://github.com/sdielmann/ng-anim8/commit/34d65cd))
+- **blur:** Add blur demo section ([866df69](https://github.com/sdielmann/ng-anim8/commit/866df69))
+- **fly:** Add FlyComponent with direction and distance inputs ([6e49435](https://github.com/sdielmann/ng-anim8/commit/6e49435))
+- **fly:** Export FlyComponent from public API and NgAnim8Module ([23cb4bd](https://github.com/sdielmann/ng-anim8/commit/23cb4bd))
+- **fly:** Add fly demo section ([80e211e](https://github.com/sdielmann/ng-anim8/commit/80e211e))
+
+### 🩹 Fixes
+
+- Fix build, update AI setup ([3902609](https://github.com/sdielmann/ng-anim8/commit/3902609))
+
+### 💅 Refactors
+
+- **slide:** Merge fly into slide, support string distance input ([da8bdcf](https://github.com/sdielmann/ng-anim8/commit/da8bdcf))
+
+### 📖 Documentation
+
+- **blur:** Document BlurComponent in README ([c92b047](https://github.com/sdielmann/ng-anim8/commit/c92b047))
+- **fly:** Document FlyComponent in README ([20f83e7](https://github.com/sdielmann/ng-anim8/commit/20f83e7))
+
+### ❤️ Contributors
+
+- Steffen Dielmann <steffen@dielmann.consulting>
+
 ## v0.0.7
 
 [compare changes](https://github.com/sdielmann/ng-anim8/compare/v0.0.6...v0.0.7)
