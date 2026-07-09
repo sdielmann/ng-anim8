@@ -20,10 +20,14 @@ export class SlideSectionComponent {
   readonly easings: EasingName[]              = ['ease-in-out', 'spring', 'bounce', 'snappy'];
   readonly directions: SlideDirection[]       = ['up', 'down', 'left', 'right'];
   readonly distances: (number | string)[]     = [10, 20, 40, '100%', '200%'];
+  readonly directionLabels: Record<SlideDirection, string> = {
+    up: '↑ up',
+    down: '↓ down',
+    left: '← left',
+    right: '→ right',
+  };
 
   readonly isNumber = (v: number | string): v is number => typeof v === 'number';
-    up: '↑ up', down: '↓ down', left: '← left', right: '→ right',
-  };
 
   readonly code = computed(() => `@if (show()) {
   <anim8-slide

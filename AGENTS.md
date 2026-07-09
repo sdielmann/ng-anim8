@@ -1,4 +1,4 @@
-# Copilot Instructions
+# AI Agent Instructions
 
 Angular 20 workspace with two projects:
 - `projects/ng-anim8/` — the published library (built with `ng-packagr`)
@@ -70,6 +70,10 @@ Does **not** extend `AnimationBase`. Uses a `MutationObserver` to assign increme
 ## Testing
 
 Tests use `@testing-library/angular` with the `render()` helper — **not** `TestBed` directly. Test files (`*.spec.ts`) live alongside their source files inside `src/`.
+
+## Documentation
+
+Documentation located in `README.md` and the demo app (`projects/demo/`) which serves as a live playground for testing and showcasing the library. BOTH need to be kept up to date whenever a new component or feature is added, changed or removed.
 
 ## Commits & Releases
 
